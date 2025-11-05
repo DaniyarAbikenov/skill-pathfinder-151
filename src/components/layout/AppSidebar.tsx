@@ -63,12 +63,12 @@ export function AppSidebar() {
       </SidebarContent>
 
       <SidebarFooter>
-        <div className="px-4 pb-4 space-y-1">
+        <div className="px-4 pb-4 space-y-2">
           {secondaryItems.map((item) => (
             <NavLink
               key={item.title}
               to={item.url}
-              className="block text-white/70 hover:text-white text-xs transition-colors"
+              className="block text-white/70 hover:text-white text-sm transition-colors"
             >
               {item.title}
             </NavLink>
