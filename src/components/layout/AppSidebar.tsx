@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -22,6 +23,9 @@ export function AppSidebar() {
     { title: t("nav.interview"), url: "/interview", icon: MessageSquare },
     { title: t("nav.progress"), url: "/progress", icon: TrendingUp },
     { title: t("nav.settings"), url: "/settings", icon: Settings },
+  ];
+
+  const secondaryItems = [
     { title: t("nav.support"), url: "/support", icon: HeadphonesIcon },
     { title: t("nav.faq"), url: "/faq", icon: HelpCircle },
   ];
@@ -57,6 +61,28 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+
+      <SidebarFooter>
+        <SidebarMenu>
+          {secondaryItems.map((item) => (
+            <SidebarMenuItem key={item.title}>
+              <SidebarMenuButton asChild size="sm">
+                <NavLink
+                  to={item.url}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "flex items-center gap-2 bg-sidebar-accent text-sidebar-primary font-medium text-sm"
+                      : "flex items-center gap-2 text-sidebar-foreground hover:bg-sidebar-accent/50 text-sm"
+                  }
+                >
+                  <item.icon className="h-3.5 w-3.5" />
+                  <span>{item.title}</span>
+                </NavLink>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   );
 }
