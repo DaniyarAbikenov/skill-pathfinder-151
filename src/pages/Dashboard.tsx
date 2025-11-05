@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,6 +8,7 @@ import { Target, FileText, Briefcase, TrendingUp } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export default function Dashboard() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -31,9 +33,9 @@ export default function Dashboard() {
     <MainLayout>
       <div className="p-6 max-w-7xl mx-auto space-y-6">
         <div>
-          <h1 className="text-3xl font-bold mb-2">Личный кабинет</h1>
+          <h1 className="text-3xl font-bold mb-2">{t("dashboard.title")}</h1>
           <p className="text-muted-foreground">
-            Добро пожаловать в ваш центр карьерного развития
+            {t("dashboard.subtitle")}
           </p>
         </div>
 
@@ -42,13 +44,13 @@ export default function Dashboard() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Target className="h-5 w-5 text-primary" />
-                Компас карьеры
+                {t("dashboard.compass.title")}
               </CardTitle>
-              <CardDescription>Целевые роли и навыки</CardDescription>
+              <CardDescription>{t("dashboard.compass.targetRoles")}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h4 className="text-sm font-medium mb-2">Целевые роли:</h4>
+                <h4 className="text-sm font-medium mb-2">{t("dashboard.compass.targetRoles")}:</h4>
                 <div className="flex flex-wrap gap-2">
                   {targetRoles.map(role => (
                     <Badge key={role} variant="default">{role}</Badge>
@@ -57,7 +59,7 @@ export default function Dashboard() {
               </div>
               
               <div>
-                <h4 className="text-sm font-medium mb-2">Пробелы в навыках:</h4>
+                <h4 className="text-sm font-medium mb-2">{t("dashboard.compass.skillGaps")}:</h4>
                 <ul className="space-y-1 text-sm text-muted-foreground">
                   {skillGaps.map((gap, i) => (
                     <li key={i}>• {gap}</li>
@@ -71,26 +73,25 @@ export default function Dashboard() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Briefcase className="h-5 w-5 text-primary" />
-                План обучения
+                {t("dashboard.plan.title")}
               </CardTitle>
               <CardDescription>Ваш путь к цели</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-sm text-muted-foreground">
-                Персональный план поможет систематически закрыть пробелы в навыках
-                и достичь целевой должности.
+                {t("dashboard.plan.noPlan")}
               </p>
               
               <div className="space-y-2">
                 <Button onClick={handleCreatePlan} className="w-full">
-                  Создать план
+                  {t("dashboard.plan.create")}
                 </Button>
                 <Button 
                   variant="outline" 
                   className="w-full"
                   onClick={() => navigate("/plan/p_demo")}
                 >
-                  Открыть план
+                  {t("dashboard.plan.open")}
                 </Button>
               </div>
             </CardContent>
@@ -100,9 +101,9 @@ export default function Dashboard() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <FileText className="h-5 w-5 text-primary" />
-                Резюме
+                {t("dashboard.resume.title")}
               </CardTitle>
-              <CardDescription>Оптимизация под вакансии</CardDescription>
+              <CardDescription>{t("dashboard.resume.description")}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-sm text-muted-foreground">
@@ -114,7 +115,7 @@ export default function Dashboard() {
                 className="w-full"
                 onClick={() => navigate("/resume")}
               >
-                Перейти к резюме
+                {t("dashboard.resume.goto")}
               </Button>
 
               <div className="pt-2 border-t">
@@ -137,11 +138,11 @@ export default function Dashboard() {
           <CardContent>
             <div className="grid gap-4 md:grid-cols-3">
               <div className="space-y-1">
-                <p className="text-sm text-muted-foreground">Шаги плана выполнены</p>
+                <p className="text-sm text-muted-foreground">{t("progress.planSteps")}</p>
                 <p className="text-2xl font-bold">3 из 10</p>
               </div>
               <div className="space-y-1">
-                <p className="text-sm text-muted-foreground">Средний балл интервью</p>
+                <p className="text-sm text-muted-foreground">{t("progress.interviewScore")}</p>
                 <p className="text-2xl font-bold">74</p>
               </div>
               <div className="space-y-1">

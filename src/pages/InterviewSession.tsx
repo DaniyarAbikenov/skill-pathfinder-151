@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -8,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { ChevronLeft, ChevronRight, CheckCircle } from "lucide-react";
 
 export default function InterviewSession() {
+  const { t } = useTranslation();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [finished, setFinished] = useState(false);
@@ -94,7 +96,7 @@ export default function InterviewSession() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center justify-between">
-                <span>Общая оценка</span>
+                <span>{t("interview.session.feedback.score")}</span>
                 <Badge variant="default" className="text-2xl px-4 py-2">
                   {mockFeedback.score}
                 </Badge>
@@ -104,7 +106,7 @@ export default function InterviewSession() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-success">Сильные стороны</CardTitle>
+              <CardTitle className="text-success">{t("interview.session.feedback.strengths")}</CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="space-y-2">
@@ -120,7 +122,7 @@ export default function InterviewSession() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-warning">Что улучшить</CardTitle>
+              <CardTitle className="text-warning">{t("interview.session.feedback.improvements")}</CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="space-y-2">
@@ -136,7 +138,7 @@ export default function InterviewSession() {
 
           <Card>
             <CardHeader>
-              <CardTitle>Примеры формулировок</CardTitle>
+              <CardTitle>{t("interview.session.feedback.examples")}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
@@ -151,7 +153,7 @@ export default function InterviewSession() {
 
           <Card>
             <CardHeader>
-              <CardTitle>Ресурсы для изучения</CardTitle>
+              <CardTitle>{t("interview.session.feedback.resources")}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
@@ -186,7 +188,7 @@ export default function InterviewSession() {
         <div className="flex items-center justify-between">
           <h1 className="text-3xl font-bold">Тренировка</h1>
           <Badge variant="outline">
-            Вопрос {currentQuestion + 1} из {questions.length}
+            {t("interview.session.question")} {currentQuestion + 1} из {questions.length}
           </Badge>
         </div>
 
@@ -200,7 +202,7 @@ export default function InterviewSession() {
             <Textarea
               value={answers[currentQuestion] || ""}
               onChange={(e) => handleAnswerChange(e.target.value)}
-              placeholder="Введите ваш ответ..."
+              placeholder={t("interview.session.answerPlaceholder")}
               rows={10}
               className="resize-none"
             />
@@ -212,17 +214,17 @@ export default function InterviewSession() {
                 disabled={currentQuestion === 0}
               >
                 <ChevronLeft className="h-4 w-4 mr-2" />
-                Назад
+                {t("interview.session.prev")}
               </Button>
 
               {currentQuestion === questions.length - 1 ? (
                 <Button onClick={handleFinish}>
                   <CheckCircle className="h-4 w-4 mr-2" />
-                  Завершить
+                  {t("interview.session.finish")}
                 </Button>
               ) : (
                 <Button onClick={handleNext}>
-                  Далее
+                  {t("interview.session.next")}
                   <ChevronRight className="h-4 w-4 ml-2" />
                 </Button>
               )}

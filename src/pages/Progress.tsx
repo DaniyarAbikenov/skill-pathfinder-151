@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -6,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Trophy, Target, MessageSquare, FileText, Award } from "lucide-react";
 
 export default function Progress() {
+  const { t } = useTranslation();
   const { toast } = useToast();
 
   const handleClaimReward = (rewardId: string) => {
@@ -32,9 +34,9 @@ export default function Progress() {
     <MainLayout>
       <div className="p-6 max-w-6xl mx-auto space-y-6">
         <div>
-          <h1 className="text-3xl font-bold mb-2">Прогресс</h1>
+          <h1 className="text-3xl font-bold mb-2">{t("progress.title")}</h1>
           <p className="text-muted-foreground">
-            Отслеживайте свои достижения и получайте награды
+            {t("progress.subtitle")}
           </p>
         </div>
 
@@ -52,7 +54,7 @@ export default function Progress() {
                   {stats.planSteps.completed} / {stats.planSteps.total}
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Шаги плана выполнены
+                  {t("progress.planSteps")}
                 </p>
                 <div className="w-full bg-muted rounded-full h-2 mt-4">
                   <div
@@ -77,7 +79,7 @@ export default function Progress() {
               <div className="space-y-2">
                 <div className="text-3xl font-bold">{stats.avgInterviewScore}</div>
                 <p className="text-sm text-muted-foreground">
-                  Средний балл интервью
+                  {t("progress.interviewScore")}
                 </p>
                 <Badge variant={stats.avgInterviewScore >= 70 ? "default" : "secondary"} className="mt-4">
                   {stats.avgInterviewScore >= 70 ? "Отлично" : "Хорошо"}
@@ -97,7 +99,7 @@ export default function Progress() {
               <div className="space-y-2">
                 <div className="text-3xl font-bold">{stats.resumeIndex}</div>
                 <p className="text-sm text-muted-foreground">
-                  Индекс улучшения резюме
+                  {t("progress.resumeIndex")}
                 </p>
                 <div className="flex gap-1 mt-4">
                   {[1, 2, 3, 4, 5].map((star) => (
@@ -118,7 +120,7 @@ export default function Progress() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Award className="h-5 w-5 text-primary" />
-              Награды и достижения
+              {t("progress.rewards.title")}
             </CardTitle>
             <CardDescription>
               Получайте бейджи за выполнение целей
@@ -152,7 +154,7 @@ export default function Progress() {
                             onClick={() => handleClaimReward(reward.id)}
                             className="mt-2"
                           >
-                            Получить
+                            {t("progress.rewards.claim")}
                           </Button>
                         )}
                         {!reward.available && (

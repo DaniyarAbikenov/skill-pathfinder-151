@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 export default function Login() {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
@@ -16,7 +19,6 @@ export default function Login() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Mock authentication
     if (email && password) {
       toast({
         title: isLogin ? "Вход выполнен" : "Регистрация завершена",
@@ -25,7 +27,7 @@ export default function Login() {
       setTimeout(() => navigate("/onboarding"), 500);
     } else {
       toast({
-        title: "Ошибка",
+        title: t("common.error"),
         description: "Заполните все поля",
         variant: "destructive",
       });
@@ -34,22 +36,25 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-muted/30 p-4">
+      <div className="absolute top-4 right-4">
+        <LanguageSwitcher />
+      </div>
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle className="text-2xl font-bold">
-            {isLogin ? "Вход в систему" : "Регистрация"}
+            {isLogin ? t("login.title") : "Регистрация"}
           </CardTitle>
           <CardDescription>
             {isLogin 
-              ? "Войдите в свой аккаунт CareerBoost" 
-              : "Создайте новый аккаунт CareerBoost"
+              ? `${t("app.name")} - ${t("app.tagline")}`
+              : `Создайте новый аккаунт ${t("app.name")}`
             }
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{t("login.email")}</Label>
               <Input
                 id="email"
                 type="email"
@@ -60,7 +65,7 @@ export default function Login() {
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="password">Пароль</Label>
+              <Label htmlFor="password">{t("login.password")}</Label>
               <Input
                 id="password"
                 type="password"
@@ -71,11 +76,11 @@ export default function Login() {
             </div>
 
             <Button type="submit" className="w-full">
-              {isLogin ? "Войти" : "Зарегистрироваться"}
+              {isLogin ? t("login.signIn") : "Зарегистрироваться"}
             </Button>
 
             <Button type="button" variant="outline" className="w-full">
-              Войти через Google
+              {t("login.signInGoogle")}
             </Button>
 
             <div className="text-center text-sm">
@@ -93,7 +98,7 @@ export default function Login() {
 
             <div className="text-center text-sm">
               <Link to="/legal/policies" className="text-muted-foreground hover:text-primary">
-                Политика конфиденциальности
+                {t("login.policies")}
               </Link>
             </div>
           </form>

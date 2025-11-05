@@ -1,16 +1,18 @@
+import { useTranslation } from "react-i18next";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function LegalPolicies() {
+  const { t } = useTranslation();
   const lastUpdated = "15 января 2025";
 
   return (
     <MainLayout>
       <div className="p-6 max-w-4xl mx-auto space-y-6">
         <div>
-          <h1 className="text-3xl font-bold mb-2">Политика конфиденциальности</h1>
+          <h1 className="text-3xl font-bold mb-2">{t("legal.title")}</h1>
           <p className="text-sm text-muted-foreground">
-            Последнее обновление: {lastUpdated}
+            {t("legal.updated")}: {lastUpdated}
           </p>
         </div>
 
@@ -21,7 +23,7 @@ export default function LegalPolicies() {
           <CardContent className="prose prose-sm max-w-none">
             <p>
               Настоящая Политика конфиденциальности определяет порядок обработки и защиты
-              персональных данных пользователей сервиса CareerBoost (далее — Сервис).
+              персональных данных пользователей сервиса {t("app.name")} (далее — Сервис).
             </p>
             <p>
               Используя Сервис, вы соглашаетесь с условиями настоящей Политики. Если вы
@@ -153,7 +155,7 @@ export default function LegalPolicies() {
               По вопросам защиты персональных данных обращайтесь:
             </p>
             <p className="text-muted-foreground">
-              Email: privacy@careerboost.example.com<br />
+              Email: privacy@a2d.example.com<br />
               Адрес: г. Москва, ул. Примерная, д. 1
             </p>
           </CardContent>

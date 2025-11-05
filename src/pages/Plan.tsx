@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -8,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Download, Video } from "lucide-react";
 
 export default function Plan() {
+  const { t } = useTranslation();
   const [weekProgress, setWeekProgress] = useState<Record<number, boolean>>({});
   const { toast } = useToast();
 
@@ -17,15 +19,15 @@ export default function Plan() {
 
   const handleExport = () => {
     toast({
-      title: "Экспорт запущен",
-      description: "План будет скачан в формате DOC",
+      title: t("plan.exported"),
+      description: t("plan.exportedDesc"),
     });
   };
 
   const handleVideoOverview = () => {
     toast({
-      title: "Запрос отправлен",
-      description: "Ссылка на аудио/видео обзор придет в ответе API",
+      title: t("plan.exported"),
+      description: t("plan.exportedDesc"),
     });
   };
 
@@ -106,7 +108,7 @@ export default function Plan() {
       <div className="p-6 max-w-5xl mx-auto space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold mb-2">План обучения</h1>
+            <h1 className="text-3xl font-bold mb-2">{t("plan.title")}</h1>
             <p className="text-muted-foreground">
               Персональный 8-недельный план развития
             </p>
@@ -118,7 +120,7 @@ export default function Plan() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Объяснение плана</CardTitle>
+            <CardTitle>{t("plan.explanation")}</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -133,7 +135,7 @@ export default function Plan() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-lg">
-                    Неделя {week.week}: {week.title}
+                    {t("plan.week")} {week.week}: {week.title}
                   </CardTitle>
                   <Checkbox
                     checked={weekProgress[week.week] || false}
@@ -143,7 +145,7 @@ export default function Plan() {
               </CardHeader>
               <CardContent className="space-y-3">
                 <div>
-                  <h4 className="text-sm font-medium mb-2">Цели:</h4>
+                  <h4 className="text-sm font-medium mb-2">{t("plan.goals")}:</h4>
                   <ul className="space-y-1">
                     {week.goals.map((goal, i) => (
                       <li key={i} className="text-sm text-muted-foreground">
@@ -153,7 +155,7 @@ export default function Plan() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="text-sm font-medium mb-2">Источники:</h4>
+                  <h4 className="text-sm font-medium mb-2">{t("plan.sources")}:</h4>
                   <div className="flex flex-wrap gap-2">
                     {week.sources.map((source, i) => (
                       <a
@@ -176,11 +178,11 @@ export default function Plan() {
         <div className="flex gap-2">
           <Button onClick={handleExport} variant="outline" className="flex-1">
             <Download className="h-4 w-4 mr-2" />
-            Экспорт в DOC
+            {t("plan.export")}
           </Button>
           <Button onClick={handleVideoOverview} variant="outline" className="flex-1">
             <Video className="h-4 w-4 mr-2" />
-            Аудио/видео обзор (NotebookLM)
+            {t("plan.notebookLM")}
           </Button>
         </div>
       </div>
