@@ -9,7 +9,9 @@
     "plan": "Learning Plan",
     "interview": "Interview",
     "progress": "Progress",
-    "settings": "Settings"
+    "settings": "Settings",
+    "support": "Support",
+    "faq": "FAQ"
   },
   "login": {
     "title": "Sign In",

@@ -14,6 +14,8 @@ import InterviewSession from "./pages/InterviewSession";
 import Progress from "./pages/Progress";
 import Settings from "./pages/Settings";
 import LegalPolicies from "./pages/LegalPolicies";
+import Support from "./pages/Support";
+import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +38,8 @@ const App = () => (
           <Route path="/interview/session/:sessionId" element={<InterviewSession />} />
           <Route path="/progress" element={<Progress />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/support" element={<Support />} />
+          <Route path="/faq" element={<FAQ />} />
           <Route path="/legal/policies" element={<LegalPolicies />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

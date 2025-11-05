@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { MultiSelect } from "@/components/MultiSelect";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { LANGUAGES } from "@/data/languages";
 import { getAllRoles } from "@/data/roles";
 
@@ -61,7 +62,10 @@ export default function Onboarding() {
   return (
     <div className="min-h-screen bg-muted/30 p-6">
       <div className="max-w-3xl mx-auto space-y-6">
-        <Card>
+        <Card className="relative">
+          <div className="absolute top-4 right-4 z-10">
+            <LanguageSwitcher />
+          </div>
           <CardHeader>
             <CardTitle className="text-2xl">{t("onboarding.title")}</CardTitle>
             <p className="text-sm text-muted-foreground">{t("onboarding.subtitle")}</p>

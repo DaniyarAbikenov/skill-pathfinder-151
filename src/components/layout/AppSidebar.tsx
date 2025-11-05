@@ -1,4 +1,4 @@
-import { Home, FileText, Target, MessageSquare, TrendingUp, Settings, FileStack } from "lucide-react";
+import { Home, FileText, Target, MessageSquare, TrendingUp, Settings, HelpCircle, HeadphonesIcon } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
@@ -22,6 +22,8 @@ export function AppSidebar() {
     { title: t("nav.interview"), url: "/interview", icon: MessageSquare },
     { title: t("nav.progress"), url: "/progress", icon: TrendingUp },
     { title: t("nav.settings"), url: "/settings", icon: Settings },
+    { title: t("nav.support"), url: "/support", icon: HeadphonesIcon },
+    { title: t("nav.faq"), url: "/faq", icon: HelpCircle },
   ];
 
   return (
