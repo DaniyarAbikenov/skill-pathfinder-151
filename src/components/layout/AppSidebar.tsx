@@ -1,5 +1,6 @@
 import { Home, FileText, Target, MessageSquare, TrendingUp, Settings, FileStack } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   Sidebar,
   SidebarContent,
@@ -11,25 +12,26 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 
-const menuItems = [
-  { title: "Личный кабинет", url: "/dashboard", icon: Home },
-  { title: "Резюме", url: "/resume", icon: FileText },
-  { title: "План обучения", url: "/plan/p_demo", icon: Target },
-  { title: "Тренировка интервью", url: "/interview", icon: MessageSquare },
-  { title: "Прогресс", url: "/progress", icon: TrendingUp },
-  { title: "Настройки", url: "/settings", icon: Settings },
-];
-
 export function AppSidebar() {
+  const { t } = useTranslation();
+
+  const menuItems = [
+    { title: t("nav.dashboard"), url: "/dashboard", icon: Home },
+    { title: t("nav.resume"), url: "/resume", icon: FileText },
+    { title: t("nav.plan"), url: "/plan/p_demo", icon: Target },
+    { title: t("nav.interview"), url: "/interview", icon: MessageSquare },
+    { title: t("nav.progress"), url: "/progress", icon: TrendingUp },
+    { title: t("nav.settings"), url: "/settings", icon: Settings },
+  ];
+
   return (
     <Sidebar className="border-r border-sidebar-border">
       <SidebarContent>
         <div className="p-4">
-          <h1 className="text-xl font-bold text-sidebar-foreground">CareerBoost</h1>
+          <h1 className="text-xl font-bold text-sidebar-foreground">{t("app.name")}</h1>
         </div>
         
         <SidebarGroup>
-          <SidebarGroupLabel>Навигация</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (

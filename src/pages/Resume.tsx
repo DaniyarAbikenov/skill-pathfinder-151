@@ -7,7 +7,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { Upload, FileText, Sparkles } from "lucide-react";
+import { Upload, FileText, Sparkles, Download } from "lucide-react";
+import jsPDF from "jspdf";
 import {
   Dialog,
   DialogContent,
@@ -89,6 +90,16 @@ export default function Resume() {
   const mockTunedResume = {
     before: "Frontend Developer с опытом работы в React. Разрабатывал компоненты и работал с API.",
     after: "Frontend Developer с 3+ годами опыта в React и TypeScript. Разработал более 50 переиспользуемых компонентов, интегрировал 15+ REST API endpoints, написал 200+ unit тестов. Применял Agile-методологии, работал с Git flow.",
+  };
+
+  const handleDownloadPDF = () => {
+    const doc = new jsPDF();
+    doc.setFontSize(16);
+    doc.text("Resume - " + mockResumeData.name, 20, 20);
+    doc.setFontSize(12);
+    doc.text(mockTunedResume.after, 20, 40, { maxWidth: 170 });
+    doc.save("resume.pdf");
+    toast({ title: "PDF скачан" });
   };
 
   return (
@@ -245,7 +256,10 @@ export default function Resume() {
                             className="border-primary"
                           />
                           <div className="flex gap-2">
-                            <Button className="flex-1">Скачать</Button>
+                            <Button className="flex-1" onClick={handleDownloadPDF}>
+                              <Download className="h-4 w-4 mr-2" />
+                              Скачать PDF
+                            </Button>
                             <Button variant="outline" className="flex-1">
                               Сохранить версию
                             </Button>
