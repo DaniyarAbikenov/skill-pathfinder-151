@@ -63,25 +63,17 @@ export function AppSidebar() {
       </SidebarContent>
 
       <SidebarFooter>
-        <SidebarMenu>
+        <div className="px-4 pb-4 space-y-1">
           {secondaryItems.map((item) => (
-            <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild size="sm">
-                <NavLink
-                  to={item.url}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "flex items-center gap-2 bg-sidebar-accent text-sidebar-primary font-medium text-sm"
-                      : "flex items-center gap-2 text-sidebar-foreground hover:bg-sidebar-accent/50 text-sm"
-                  }
-                >
-                  <item.icon className="h-3.5 w-3.5" />
-                  <span>{item.title}</span>
-                </NavLink>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
+            <NavLink
+              key={item.title}
+              to={item.url}
+              className="block text-white/70 hover:text-white text-xs transition-colors"
+            >
+              {item.title}
+            </NavLink>
           ))}
-        </SidebarMenu>
+        </div>
       </SidebarFooter>
     </Sidebar>
   );
