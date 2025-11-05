@@ -11,6 +11,10 @@ import { MultiSelect } from "@/components/MultiSelect";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { LANGUAGES } from "@/data/languages";
 import { getAllRoles } from "@/data/roles";
+import { updateUserProfile } from "@/api/user";
+import { getErrorMessage } from "@/lib/errors";
+import { auth } from "@/lib/firebase";
+
 
 export default function Onboarding() {
   const { t } = useTranslation();
@@ -34,21 +38,56 @@ export default function Onboarding() {
     setSkills(skills.filter(s => s !== skill));
   };
 
-  const handleSave = () => {
-    if (!name || selectedRoles.length === 0 || skills.length === 0) {
-      toast({
-        title: t("common.error"),
-        description: "Заполните все обязательные поля",
-        variant: "destructive",
-      });
-      return;
-    }
+    const handleSave = async () => {
+        if (!name || selectedRoles.length === 0 || skills.length === 0) {
+            toast({
+                title: t("common.error"),
+                description: "Заполните все обязательные поля",
+                variant: "destructive",
+            });
+            return;
+        }
 
-    toast({
-      title: t("common.success"),
-      description: "Анкета сохранена",
-    });
-  };
+        try {
+            const user = auth.currentUser;
+            if (!user) {
+                toast({
+                    title: t("common.error"),
+                    description: "Вы не авторизованы",
+                    variant: "destructive",
+                });
+                return;
+            }
+
+            const profilePayload = {
+                full_name: name,
+                email: user.email,
+                desired_position: selectedRoles[0],
+                career_goal: selectedRoles.join(", "),
+                skills: skills,
+                extra: {
+                    languages: selectedLanguages,
+                    normalized_skills: normalizedSkills,
+                },
+            };
+
+            await updateUserProfile(profilePayload);
+
+            toast({
+                title: t("common.success"),
+                description: "Анкета сохранена",
+            });
+
+            navigate("/dashboard");
+
+        } catch (err) {
+            toast({
+                title: t("common.error"),
+                description: getErrorMessage(err),
+                variant: "destructive",
+            });
+        }
+    };
 
   const handleNormalize = () => {
     const normalized = skills.map(s => s.toLowerCase().trim());

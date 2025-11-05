@@ -6,6 +6,8 @@
     "paths": {
       "@/*": ["./src/*"]
     },
+    "strict": true,
+    "useUnknownInCatchVariables": true,
     "noImplicitAny": false,
     "noUnusedParameters": false,
     "skipLibCheck": true,
