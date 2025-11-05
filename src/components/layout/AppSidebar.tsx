@@ -68,7 +68,7 @@ export function AppSidebar() {
             <NavLink
               key={item.title}
               to={item.url}
-              className="block text-white/70 hover:text-white text-sm transition-colors"
+              className="block text-white/70 hover:text-white transition-colors"
             >
               {item.title}
             </NavLink>
