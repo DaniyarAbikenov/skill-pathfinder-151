@@ -18,6 +18,7 @@ export default function ResumeEdit() {
     const { fields, setFields, jdText, setJdText } = useResumeStore();
 
     const [loading, setLoading] = useState(true);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [pdfUrl, setPdfUrl] = useState<string | null>(null);
 
     useEffect(() => {
@@ -44,14 +45,19 @@ export default function ResumeEdit() {
     }, [resumeId]);
 
     async function handleContinue() {
-        const result = await improveResume(resumeId!, jdText);
+        if (isSubmitting) return;       // защита от двойного клика
+        setIsSubmitting(true);
 
-        // сохраняем improvements в Zustand
-        useResumeStore.getState().setImprovements(result.improvements);
+        try {
+            const result = await improveResume(resumeId!, jdText);
 
-        navigate(`/resume/${resumeId}/improvements`);
+            useResumeStore.getState().setImprovements(result.improvements);
+
+            navigate(`/resume/${resumeId}/improvements`);
+        } finally {
+            setIsSubmitting(false);
+        }
     }
-
     if (loading)
         return (
             <MainLayout>
@@ -99,8 +105,16 @@ export default function ResumeEdit() {
                 <Button
                     onClick={handleContinue}
                     className="w-full mt-6 text-lg py-6"
+                    disabled={isSubmitting}
                 >
-                    Continue → Get Recommendations
+                    {isSubmitting ? (
+                        <div className="flex items-center gap-2">
+                            <span className="w-4 h-4 border-2 border-t-transparent border-white rounded-full animate-spin" />
+                            Processing…
+                        </div>
+                    ) : (
+                        "Continue → Get Recommendations"
+                    )}
                 </Button>
             </div>
         </MainLayout>

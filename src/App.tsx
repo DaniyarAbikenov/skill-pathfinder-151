@@ -24,6 +24,8 @@ import ResumeGenerate from "@/pages/ResumeGenerate.tsx";
 import ResumeImprove from "@/pages/ResumeImprove.tsx";
 import ResumeEdit from "@/pages/ResumeEdit.tsx";
 import ImprovementsPage from "@/pages/ImprovementsPage.tsx";
+import InterviewStart from "@/pages/InterviewStart.tsx";
+import InterviewResult from "@/pages/InterviewResult.tsx";
 
 const queryClient = new QueryClient();
 
@@ -92,14 +94,14 @@ const App = () => (
                         <ProtectedRoute>
                             <Plan/>
                         </ProtectedRoute>}/>
-                    <Route path="/interview" element={
-                        <ProtectedRoute>
-                            <Interview/>
-                        </ProtectedRoute>}/>
-                    <Route path="/interview/session/:sessionId" element={
-                        <ProtectedRoute>
-                            <InterviewSession/>
-                        </ProtectedRoute>}/>
+                    {/*<Route path="/interview" element={*/}
+                    {/*    <ProtectedRoute>*/}
+                    {/*        <Interview/>*/}
+                    {/*    </ProtectedRoute>}/>*/}
+                    {/*<Route path="/interview/session/:sessionId" element={*/}
+                    {/*    <ProtectedRoute>*/}
+                    {/*        <InterviewSession/>*/}
+                    {/*    </ProtectedRoute>}/>*/}
                     <Route path="/progress" element={
                         <ProtectedRoute>
                             <Progress/>
@@ -148,6 +150,10 @@ const App = () => (
                         <ProtectedRoute>
                             <ImprovementsPage/>
                         </ProtectedRoute>}/>
+                    <Route path="/interview/start" element={<InterviewStart />} />
+                    <Route path="/interview" element={<InterviewStart />} />
+                    <Route path="/interview/session" element={<InterviewSession />} />
+                    <Route path="/interview/result" element={<InterviewResult />} />
 
                     <Route path="/support" element={<Support/>}/>
                     <Route path="/faq" element={<FAQ/>}/>

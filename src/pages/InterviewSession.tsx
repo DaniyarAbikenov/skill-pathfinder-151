@@ -1,255 +1,107 @@
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { MainLayout } from "@/components/layout/MainLayout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useInterviewStore } from "@/store/useInterviewStore";
+import { answerInterview } from "@/api/interview";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
-import { useToast } from "@/hooks/use-toast";
-import { ChevronLeft, ChevronRight, CheckCircle } from "lucide-react";
+import { MainLayout } from "@/components/layout/MainLayout.tsx";
 
 export default function InterviewSession() {
-  const { t } = useTranslation();
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<Record<number, string>>({});
-  const [finished, setFinished] = useState(false);
-  const { toast } = useToast();
+  const navigate = useNavigate();
 
-  const questions = [
-    "Расскажите о себе и своем опыте в разработке.",
-    "Что такое замыкание в JavaScript? Приведите пример.",
-    "Объясните разницу между let, const и var.",
-    "Что такое виртуальный DOM в React и как он работает?",
-    "Расскажите о методе STAR для ответов на поведенческие вопросы.",
-  ];
+  const {
+    sessionId,
+    messages,
+    addMessage,
+    currentQuestion,
+    setCurrentQuestion,
+    finished,
+    setFinished,
+    totalQuestions,          // ✅ добавлено
+    currentIndex,            // ✅ добавлено
+    setCurrentIndex          // ✅ добавлено
+  } = useInterviewStore();
 
-  const handleAnswerChange = (value: string) => {
-    setAnswers(prev => ({ ...prev, [currentQuestion]: value }));
-  };
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleNext = () => {
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(prev => prev + 1);
-    }
-  };
+  async function send() {
+    if (!sessionId || !currentQuestion) return;
 
-  const handlePrev = () => {
-    if (currentQuestion > 0) {
-      setCurrentQuestion(prev => prev - 1);
-    }
-  };
+    addMessage({ role: "user", text: input });
 
-  const handleFinish = () => {
-    const answeredCount = Object.keys(answers).length;
-    if (answeredCount < questions.length) {
-      toast({
-        title: "Не все вопросы отвечены",
-        description: `Отвечено ${answeredCount} из ${questions.length}`,
-        variant: "destructive",
-      });
+    const userAnswer = input;
+    setInput("");
+    setLoading(true);
+
+    const res = await answerInterview(sessionId, userAnswer);
+
+    // ✅ показываем правильный ответ
+    addMessage({
+      role: "interviewer",
+      text: `Correct answer: ${res.correct_answer}`
+    });
+
+    // ✅ если интервью закончено
+    if (res.finished) {
+      setFinished(true);
+      navigate("/interview/result");
       return;
     }
 
-    setFinished(true);
-    toast({
-      title: "Тренировка завершена",
-      description: "Анализируем ваши ответы...",
-    });
-  };
+    // ✅ следующий вопрос
+    addMessage({ role: "interviewer", text: res.next_question });
 
-  const mockFeedback = {
-    score: 74,
-    strengths: [
-      "Структурированные ответы по методу STAR",
-      "Четкие примеры из опыта",
-      "Хорошая техническая терминология",
-    ],
-    improvements: [
-      "Добавить конкретные метрики достижений",
-      "Сократить вводную часть ответов",
-      "Меньше использовать технический жаргон",
-      "Четче формулировать итоговый результат",
-      "Добавить примеры командной работы",
-    ],
-    examples: [
-      "«Сократил время загрузки страницы на 30%»",
-      "«Увеличил конверсию формы с 2% до 5%»",
-      "«Настроил CI/CD, уменьшив время деплоя с 30 до 5 минут»",
-    ],
-    resources: [
-      { title: "STAR Method Guide", url: "https://example.com/star" },
-      { title: "React Interview Questions", url: "https://example.com/react" },
-      { title: "Algorithm Practice", url: "https://example.com/algo" },
-    ],
-  };
+    setCurrentQuestion(res.next_question);
 
-  if (finished) {
-    return (
-      <MainLayout>
-        <div className="p-6 max-w-4xl mx-auto space-y-6">
-          <div className="text-center">
-            <CheckCircle className="h-16 w-16 text-success mx-auto mb-4" />
-            <h1 className="text-3xl font-bold mb-2">Тренировка завершена!</h1>
-            <p className="text-muted-foreground">Вот ваш детальный фидбек</p>
-          </div>
+    // ✅ увеличиваем индекс текущего вопроса
+    setCurrentIndex(currentIndex + 1);
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center justify-between">
-                <span>{t("interview.session.feedback.score")}</span>
-                <Badge variant="default" className="text-2xl px-4 py-2">
-                  {mockFeedback.score}
-                </Badge>
-              </CardTitle>
-            </CardHeader>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-success">{t("interview.session.feedback.strengths")}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2">
-                {mockFeedback.strengths.map((strength, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <span className="text-success">✓</span>
-                    <span>{strength}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-warning">{t("interview.session.feedback.improvements")}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2">
-                {mockFeedback.improvements.map((improvement, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <span className="text-warning">•</span>
-                    <span>{improvement}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>{t("interview.session.feedback.examples")}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2">
-                {mockFeedback.examples.map((example, i) => (
-                  <div key={i} className="p-3 bg-muted rounded-md">
-                    <p className="text-sm">{example}</p>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>{t("interview.session.feedback.resources")}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2">
-                {mockFeedback.resources.map((resource, i) => (
-                  <a
-                    key={i}
-                    href={resource.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block p-3 border rounded-md hover:bg-muted transition-colors"
-                  >
-                    <span className="text-sm font-medium text-primary hover:underline">
-                      {resource.title}
-                    </span>
-                  </a>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          <Button onClick={() => window.location.href = "/interview"} className="w-full">
-            Начать новую тренировку
-          </Button>
-        </div>
-      </MainLayout>
-    );
+    setLoading(false);
   }
 
   return (
-    <MainLayout>
-      <div className="p-6 max-w-4xl mx-auto space-y-6">
-        <div className="flex items-center justify-between">
-          <h1 className="text-3xl font-bold">Тренировка</h1>
-          <Badge variant="outline">
-            {t("interview.session.question")} {currentQuestion + 1} из {questions.length}
-          </Badge>
-        </div>
+      <MainLayout>
+        <div className="p-8 max-w-2xl mx-auto space-y-4 relative">
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">
-              {questions[currentQuestion]}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Textarea
-              value={answers[currentQuestion] || ""}
-              onChange={(e) => handleAnswerChange(e.target.value)}
-              placeholder={t("interview.session.answerPlaceholder")}
-              rows={10}
-              className="resize-none"
-            />
+          {/* ✅ Индикатор прогресса в углу */}
+          <div className="absolute top-4 right-4 text-sm text-gray-600 font-medium">
+            Question {currentIndex + 1} / {totalQuestions}
+          </div>
 
-            <div className="flex justify-between items-center pt-4 border-t">
-              <Button
-                variant="outline"
-                onClick={handlePrev}
-                disabled={currentQuestion === 0}
-              >
-                <ChevronLeft className="h-4 w-4 mr-2" />
-                {t("interview.session.prev")}
-              </Button>
+          <h1 className="text-xl font-bold">Interview</h1>
 
-              {currentQuestion === questions.length - 1 ? (
-                <Button onClick={handleFinish}>
-                  <CheckCircle className="h-4 w-4 mr-2" />
-                  {t("interview.session.finish")}
-                </Button>
-              ) : (
-                <Button onClick={handleNext}>
-                  {t("interview.session.next")}
-                  <ChevronRight className="h-4 w-4 ml-2" />
-                </Button>
-              )}
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-sm">Прогресс ответов</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex gap-2">
-              {questions.map((_, i) => (
+          <div className="border rounded p-4 space-y-3 h-[60vh] overflow-y-auto bg-white">
+            {messages.map((m, i) => (
                 <div
-                  key={i}
-                  className={`flex-1 h-2 rounded-full ${
-                    answers[i] ? "bg-primary" : "bg-muted"
-                  }`}
+                    key={i}
+                    className={m.role === "user" ? "text-right" : "text-left"}
+                >
+                  <div
+                      className={`inline-block px-3 py-2 rounded-lg ${
+                          m.role === "user" ? "bg-blue-200" : "bg-gray-200"
+                      }`}
+                  >
+                    {m.text}
+                  </div>
+                </div>
+            ))}
+          </div>
+
+          {!finished && (
+              <div className="flex gap-2">
+                <input
+                    className="flex-1 border rounded p-2"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    placeholder="Your answer…"
+                    disabled={loading}
                 />
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </MainLayout>
+                <Button disabled={loading || !input.trim()} onClick={send}>
+                  {loading ? "..." : "Send"}
+                </Button>
+              </div>
+          )}
+        </div>
+      </MainLayout>
   );
 }
