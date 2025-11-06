@@ -1,38 +1,49 @@
-import { useState } from "react";
-import { uploadResume } from "@/api/resume";
-import { useResumeStore } from "@/store/resumeStore";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { uploadResume, extractResume } from "@/api/resume";
+import { useResumeStore } from "@/store/resumeStore";
+import { MainLayout } from "@/components/layout/MainLayout";
 
 export default function ResumeUpload() {
-    const [file, setFile] = useState<File | null>(null);
-    const { setResumeId } = useResumeStore();
     const navigate = useNavigate();
+    const { setFields } = useResumeStore();
 
-    async function handleUpload() {
+    const [loading, setLoading] = useState(false);
+
+    async function handleUpload(e: React.ChangeEvent<HTMLInputElement>) {
+        const file = e.target.files?.[0];
         if (!file) return;
 
+        setLoading(true);
+
+        // ✅ 1. Upload to GCS
         const { resume_id } = await uploadResume(file);
 
-        setResumeId(resume_id);
+        // ✅ 2. Extract fields
+        const extracted = await extractResume(resume_id);
 
+        setFields(extracted.fields);
+
+        setLoading(false);
+
+        // ✅ 3. Move to editor
         navigate(`/resume/${resume_id}/edit`);
     }
 
     return (
-        <div className="p-8 max-w-xl mx-auto">
-            <h1 className="text-3xl font-bold mb-4">Upload Resume</h1>
+        <MainLayout>
+            <div className="p-8 max-w-xl mx-auto">
+                <h1 className="text-2xl font-bold mb-6">Upload your Resume</h1>
 
-            <Input
-                type="file"
-                accept=".pdf"
-                onChange={(e) => setFile(e.target.files?.[0] || null)}
-            />
+                <input
+                    type="file"
+                    accept="application/pdf"
+                    onChange={handleUpload}
+                    className="border p-3 w-full"
+                />
 
-            <Button className="mt-4 w-full" onClick={handleUpload} disabled={!file}>
-                Upload
-            </Button>
-        </div>
+                {loading && <div className="mt-4">Processing…</div>}
+            </div>
+        </MainLayout>
     );
 }

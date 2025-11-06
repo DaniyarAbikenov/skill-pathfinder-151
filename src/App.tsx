@@ -23,6 +23,7 @@ import {ProtectedRoute} from "@/routes/ProtectedRoute.tsx";
 import ResumeGenerate from "@/pages/ResumeGenerate.tsx";
 import ResumeImprove from "@/pages/ResumeImprove.tsx";
 import ResumeEdit from "@/pages/ResumeEdit.tsx";
+import ImprovementsPage from "@/pages/ImprovementsPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +62,14 @@ const App = () => (
                     />
 
 
+                    <Route
+                        path="/"
+                        element={
+                            <ProtectedRoute>
+                                <Dashboard/>
+                            </ProtectedRoute>
+                        }
+                    />
                     <Route
                         path="/dashboard"
                         element={
@@ -135,6 +144,11 @@ const App = () => (
                             </ProtectedRoute>
                         }
                     />
+                    <Route path="/resume/:resumeId/improvements" element={
+                        <ProtectedRoute>
+                            <ImprovementsPage/>
+                        </ProtectedRoute>}/>
+
                     <Route path="/support" element={<Support/>}/>
                     <Route path="/faq" element={<FAQ/>}/>
                     <Route path="/legal/policies" element={<LegalPolicies/>}/>
