@@ -8,6 +8,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useToast } from "@/hooks/use-toast";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { registerWithEmail } from "@/api/auth";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 export default function Register() {
     const { t } = useTranslation();
@@ -18,6 +28,7 @@ export default function Register() {
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
     const [submitting, setSubmitting] = useState(false);
+    const [showEmailInUseDialog, setShowEmailInUseDialog] = useState(false);
 
     const onSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -38,10 +49,23 @@ export default function Register() {
         try {
             setSubmitting(true);
             await registerWithEmail(email, password);
-            toast({ title: t("register.success") ?? "Регистрация завершена", description: t("login.redirect") ?? "Перенаправление..." });
+            toast({ title: t("register.success"), description: t("login.redirect") });
             navigate("/onboarding");
-        } catch (err) {
-            toast({ title: t("common.error"), description: err?.message ?? t("register.error"), variant: "destructive" });
+        } catch (err: any) {
+            console.error("Registration error:", err);
+            
+            // Проверяем код ошибки Firebase
+            if (err?.code === "auth/email-already-in-use" || err?.message?.includes("email-already-in-use")) {
+                // Показываем диалог с предложением войти
+                setShowEmailInUseDialog(true);
+            } else {
+                // Показываем общую ошибку
+                toast({ 
+                    title: t("common.error"), 
+                    description: err?.message ?? t("register.error"), 
+                    variant: "destructive" 
+                });
+            }
         } finally {
             setSubmitting(false);
         }
@@ -92,6 +116,24 @@ export default function Register() {
                     </form>
                 </CardContent>
             </Card>
+
+            {/* Диалог для случая, когда email уже используется */}
+            <AlertDialog open={showEmailInUseDialog} onOpenChange={setShowEmailInUseDialog}>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle>{t("register.emailInUse")}</AlertDialogTitle>
+                        <AlertDialogDescription>
+                            {t("register.emailInUseDesc")}
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
+                        <AlertDialogAction onClick={() => navigate("/login")}>
+                            {t("register.goToLogin")}
+                        </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
         </div>
     );
 }

@@ -37,7 +37,10 @@
     "passwordMismatch": "Passwords do not match",
     "passwordWeak": "Password must be at least 6 characters",
     "success": "Registration completed",
-    "error": "Registration failed"
+    "error": "Registration failed",
+    "emailInUse": "Email already registered",
+    "emailInUseDesc": "This email is already in use. Would you like to sign in instead?",
+    "goToLogin": "Go to Sign In"
   },
   "onboarding": {
     "title": "Profile",
