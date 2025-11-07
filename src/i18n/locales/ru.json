@@ -19,6 +19,11 @@
     "password": "Пароль",
     "signIn": "Войти",
     "signInGoogle": "Войти с Google",
+    "fillAll": "Заполните все поля",
+    "success": "Вход выполнен",
+    "redirect": "Перенаправление...",
+    "noAccount": "Нет аккаунта?",
+    "registerNow": "Зарегистрируйтесь",
     "policies": "Политики и соглашения"
   },
   "onboarding": {

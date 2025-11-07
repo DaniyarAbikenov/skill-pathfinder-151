@@ -1,6 +1,27 @@
 import { create } from "zustand";
 
-export const useInterviewStore = create((set) => ({
+interface Message {
+    role: string;
+    text: string;
+}
+
+interface InterviewStore {
+    sessionId: string | null;
+    messages: Message[];
+    currentQuestion: string | null;
+    finished: boolean;
+    totalQuestions: number;
+    currentIndex: number;
+    setSessionId: (id: string) => void;
+    addMessage: (msg: Message) => void;
+    setCurrentQuestion: (q: string) => void;
+    setFinished: (f: boolean) => void;
+    setTotalQuestions: (n: number) => void;
+    setCurrentIndex: (i: number) => void;
+    reset: () => void;
+}
+
+export const useInterviewStore = create<InterviewStore>((set) => ({
     sessionId: null,
     messages: [],
     currentQuestion: null,

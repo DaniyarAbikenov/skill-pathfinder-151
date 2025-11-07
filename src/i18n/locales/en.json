@@ -19,6 +19,11 @@
     "password": "Password",
     "signIn": "Sign In",
     "signInGoogle": "Sign in with Google",
+    "fillAll": "Please fill in all fields",
+    "success": "Successfully signed in",
+    "redirect": "Redirecting...",
+    "noAccount": "Don't have an account?",
+    "registerNow": "Register now",
     "policies": "Policies and Agreements"
   },
   "onboarding": {

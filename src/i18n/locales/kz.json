@@ -19,6 +19,11 @@
     "password": "Құпия сөз",
     "signIn": "Кіру",
     "signInGoogle": "Google арқылы кіру",
+    "fillAll": "Барлық өрістерді толтырыңыз",
+    "success": "Кіру орындалды",
+    "redirect": "Бағыттау...",
+    "noAccount": "Аккаунт жоқ па?",
+    "registerNow": "Тіркеліңіз",
     "policies": "Саясаттар мен келісімдер"
   },
   "onboarding": {
