@@ -72,6 +72,13 @@
       "targetRoles": "Целевые роли",
       "skillGaps": "Пробелы в навыках"
     },
+    "skillGaps": {
+      "reactHooks": "React Hooks продвинутые паттерны",
+      "typescript": "TypeScript generics",
+      "stateManagement": "State management (Redux/Zustand)",
+      "testing": "Testing (Jest, React Testing Library)",
+      "cicd": "CI/CD и DevOps основы"
+    },
     "plan": {
       "title": "План обучения",
       "create": "Создать план",
@@ -154,7 +161,73 @@
     "notebookLM": "Сделать аудио/видео обзор (NotebookLM)",
     "exported": "Отправлено",
     "exportedDesc": "Ссылка придёт в ответе API",
-    "personalPlan": "Персональный 8-недельный план развития"
+    "personalPlan": "Персональный 8-недельный план развития",
+    "planExplanation": "План подобран под роль Frontend Developer с учетом текущих навыков. Акцент на React и TypeScript, так как это ключевые требования большинства вакансий. Последние недели посвящены state management и тестированию — это поможет выделиться среди junior-разработчиков.",
+    "weeks": {
+      "1": {
+        "title": "HTML/CSS основы",
+        "goals": {
+          "1": "Изучить семантические теги HTML5",
+          "2": "Освоить Flexbox и Grid"
+        }
+      },
+      "2": {
+        "title": "JavaScript основы",
+        "goals": {
+          "1": "Переменные, типы данных",
+          "2": "Циклы и условия",
+          "3": "Функции"
+        }
+      },
+      "3": {
+        "title": "JavaScript продвинутый",
+        "goals": {
+          "1": "Async/await",
+          "2": "Promises",
+          "3": "Fetch API"
+        }
+      },
+      "4": {
+        "title": "React основы",
+        "goals": {
+          "1": "Компоненты и props",
+          "2": "State и lifecycle",
+          "3": "Events"
+        }
+      },
+      "5": {
+        "title": "React Hooks",
+        "goals": {
+          "1": "useState, useEffect",
+          "2": "Custom hooks",
+          "3": "useContext"
+        }
+      },
+      "6": {
+        "title": "TypeScript",
+        "goals": {
+          "1": "Типы и интерфейсы",
+          "2": "Generics",
+          "3": "TypeScript с React"
+        }
+      },
+      "7": {
+        "title": "State Management",
+        "goals": {
+          "1": "Redux Toolkit",
+          "2": "Zustand basics",
+          "3": "Context patterns"
+        }
+      },
+      "8": {
+        "title": "Testing",
+        "goals": {
+          "1": "Jest basics",
+          "2": "React Testing Library",
+          "3": "Integration tests"
+        }
+      }
+    }
   },
   "interview": {
     "title": "Тренировка интервью",

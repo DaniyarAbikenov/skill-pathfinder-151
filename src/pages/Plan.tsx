@@ -35,8 +35,8 @@ export default function Plan() {
     weeks: [
       {
         week: 1,
-        title: "HTML/CSS основы",
-        goals: ["Изучить семантические теги HTML5", "Освоить Flexbox и Grid"],
+        title: t("plan.weeks.1.title"),
+        goals: [t("plan.weeks.1.goals.1"), t("plan.weeks.1.goals.2")],
         sources: [
           { title: "MDN HTML Guide", url: "https://developer.mozilla.org" },
           { title: "CSS Tricks - Flexbox", url: "https://css-tricks.com" },
@@ -44,8 +44,8 @@ export default function Plan() {
       },
       {
         week: 2,
-        title: "JavaScript основы",
-        goals: ["Переменные, типы данных", "Циклы и условия", "Функции"],
+        title: t("plan.weeks.2.title"),
+        goals: [t("plan.weeks.2.goals.1"), t("plan.weeks.2.goals.2"), t("plan.weeks.2.goals.3")],
         sources: [
           { title: "JavaScript.info", url: "https://javascript.info" },
           { title: "Eloquent JavaScript", url: "https://eloquentjavascript.net" },
@@ -53,54 +53,54 @@ export default function Plan() {
       },
       {
         week: 3,
-        title: "JavaScript продвинутый",
-        goals: ["Async/await", "Promises", "Fetch API"],
+        title: t("plan.weeks.3.title"),
+        goals: [t("plan.weeks.3.goals.1"), t("plan.weeks.3.goals.2"), t("plan.weeks.3.goals.3")],
         sources: [
           { title: "Async JavaScript Guide", url: "https://javascript.info/async" },
         ],
       },
       {
         week: 4,
-        title: "React основы",
-        goals: ["Компоненты и props", "State и lifecycle", "Events"],
+        title: t("plan.weeks.4.title"),
+        goals: [t("plan.weeks.4.goals.1"), t("plan.weeks.4.goals.2"), t("plan.weeks.4.goals.3")],
         sources: [
           { title: "React Official Docs", url: "https://react.dev" },
         ],
       },
       {
         week: 5,
-        title: "React Hooks",
-        goals: ["useState, useEffect", "Custom hooks", "useContext"],
+        title: t("plan.weeks.5.title"),
+        goals: [t("plan.weeks.5.goals.1"), t("plan.weeks.5.goals.2"), t("plan.weeks.5.goals.3")],
         sources: [
           { title: "React Hooks API", url: "https://react.dev/reference/react" },
         ],
       },
       {
         week: 6,
-        title: "TypeScript",
-        goals: ["Типы и интерфейсы", "Generics", "TypeScript с React"],
+        title: t("plan.weeks.6.title"),
+        goals: [t("plan.weeks.6.goals.1"), t("plan.weeks.6.goals.2"), t("plan.weeks.6.goals.3")],
         sources: [
           { title: "TypeScript Handbook", url: "https://typescriptlang.org" },
         ],
       },
       {
         week: 7,
-        title: "State Management",
-        goals: ["Redux Toolkit", "Zustand basics", "Context patterns"],
+        title: t("plan.weeks.7.title"),
+        goals: [t("plan.weeks.7.goals.1"), t("plan.weeks.7.goals.2"), t("plan.weeks.7.goals.3")],
         sources: [
           { title: "Redux Toolkit Docs", url: "https://redux-toolkit.js.org" },
         ],
       },
       {
         week: 8,
-        title: "Testing",
-        goals: ["Jest basics", "React Testing Library", "Integration tests"],
+        title: t("plan.weeks.8.title"),
+        goals: [t("plan.weeks.8.goals.1"), t("plan.weeks.8.goals.2"), t("plan.weeks.8.goals.3")],
         sources: [
           { title: "Testing Library", url: "https://testing-library.com" },
         ],
       },
     ],
-    explanation: "План подобран под роль Frontend Developer с учетом текущих навыков. Акцент на React и TypeScript, так как это ключевые требования большинства вакансий. Последние недели посвящены state management и тестированию — это поможет выделиться среди junior-разработчиков.",
+    explanation: t("plan.planExplanation"),
   };
 
   return (

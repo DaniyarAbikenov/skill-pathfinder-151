@@ -22,11 +22,11 @@ export default function Dashboard() {
 
   const targetRoles = ["Frontend Developer", "Full Stack Developer", "React Developer"];
   const skillGaps = [
-    "React Hooks продвинутые паттерны",
-    "TypeScript generics",
-    "State management (Redux/Zustand)",
-    "Testing (Jest, React Testing Library)",
-    "CI/CD и DevOps основы",
+    t("dashboard.skillGaps.reactHooks"),
+    t("dashboard.skillGaps.typescript"),
+    t("dashboard.skillGaps.stateManagement"),
+    t("dashboard.skillGaps.testing"),
+    t("dashboard.skillGaps.cicd"),
   ];
 
   return (

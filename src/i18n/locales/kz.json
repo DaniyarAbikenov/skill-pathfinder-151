@@ -72,6 +72,13 @@
       "targetRoles": "Мақсатты рөлдер",
       "skillGaps": "Дағдылардағы олқылықтар"
     },
+    "skillGaps": {
+      "reactHooks": "React Hooks кеңейтілген үлгілер",
+      "typescript": "TypeScript generics",
+      "stateManagement": "State management (Redux/Zustand)",
+      "testing": "Testing (Jest, React Testing Library)",
+      "cicd": "CI/CD және DevOps негіздері"
+    },
     "plan": {
       "title": "Оқу жоспары",
       "create": "Жоспар жасау",
@@ -154,7 +161,73 @@
     "notebookLM": "Аудио/бейне шолу жасау (NotebookLM)",
     "exported": "Жіберілді",
     "exportedDesc": "Сілтеме API жауабында келеді",
-    "personalPlan": "Жекелендірілген 8 апталық даму жоспары"
+    "personalPlan": "Жекелендірілген 8 апталық даму жоспары",
+    "planExplanation": "Жоспар ағымдағы дағдыларды ескере отырып Frontend Developer рөліне арналған. React және TypeScript-ке баса назар аударылады, өйткені олар көпшілік лауазымдардың негізгі талаптары болып табылады. Соңғы апталар state management және тестілеуге арналған — бұл junior әзірлеушілер арасында ерекшеленуге көмектеседі.",
+    "weeks": {
+      "1": {
+        "title": "HTML/CSS негіздері",
+        "goals": {
+          "1": "HTML5 семантикалық тегтерін үйрену",
+          "2": "Flexbox және Grid меңгеру"
+        }
+      },
+      "2": {
+        "title": "JavaScript негіздері",
+        "goals": {
+          "1": "Айнымалылар, деректер түрлері",
+          "2": "Циклдар мен шарттар",
+          "3": "Функциялар"
+        }
+      },
+      "3": {
+        "title": "Кеңейтілген JavaScript",
+        "goals": {
+          "1": "Async/await",
+          "2": "Promises",
+          "3": "Fetch API"
+        }
+      },
+      "4": {
+        "title": "React негіздері",
+        "goals": {
+          "1": "Компоненттер мен props",
+          "2": "State және lifecycle",
+          "3": "Events"
+        }
+      },
+      "5": {
+        "title": "React Hooks",
+        "goals": {
+          "1": "useState, useEffect",
+          "2": "Custom hooks",
+          "3": "useContext"
+        }
+      },
+      "6": {
+        "title": "TypeScript",
+        "goals": {
+          "1": "Түрлер мен интерфейстер",
+          "2": "Generics",
+          "3": "TypeScript React-пен"
+        }
+      },
+      "7": {
+        "title": "State Management",
+        "goals": {
+          "1": "Redux Toolkit",
+          "2": "Zustand негіздері",
+          "3": "Context үлгілері"
+        }
+      },
+      "8": {
+        "title": "Testing",
+        "goals": {
+          "1": "Jest негіздері",
+          "2": "React Testing Library",
+          "3": "Интеграциялық тесттер"
+        }
+      }
+    }
   },
   "interview": {
     "title": "Сұхбат жаттығуы",
