@@ -37,12 +37,12 @@ export default function Onboarding() {
             try {
                 const user = auth.currentUser;
                 if (!user) {
-                    toast({ title: t("common.error"), description: "Вы не авторизованы", variant: "destructive" });
+                    toast({ title: t("common.error"), description: t("onboarding.unauthorized"), variant: "destructive" });
                     navigate("/login");
                     return;
                 }
 
-                const profile = await getUserProfile(); // GET /user/profile
+                const profile = await getUserProfile();
                 if (profile) {
                     setName(profile.full_name || "");
 
@@ -86,7 +86,7 @@ export default function Onboarding() {
         setNormalizedSkills([...new Set(normalized)]);
         toast({
             title: t("onboarding.normalizedSkills"),
-            description: `Обработано ${normalized.length} навыков`,
+            description: t("onboarding.skillsProcessed").replace("{count}", String(normalized.length)),
         });
     };
 
@@ -94,7 +94,7 @@ export default function Onboarding() {
         if (!name || selectedRoles.length === 0 || skills.length === 0) {
             toast({
                 title: t("common.error"),
-                description: "Заполните все обязательные поля",
+                description: t("onboarding.fillRequired"),
                 variant: "destructive",
             });
             return;
@@ -105,7 +105,7 @@ export default function Onboarding() {
             if (!user) {
                 toast({
                     title: t("common.error"),
-                    description: "Вы не авторизованы",
+                    description: t("onboarding.unauthorized"),
                     variant: "destructive",
                 });
                 return;
@@ -127,7 +127,7 @@ export default function Onboarding() {
 
             toast({
                 title: t("common.success"),
-                description: "Анкета сохранена",
+                description: t("onboarding.profileSaved"),
             });
 
             navigate("/dashboard");
@@ -144,7 +144,7 @@ export default function Onboarding() {
     if (loading) {
         return (
             <MainLayout>
-                <div className="p-8">Загрузка…</div>
+                <div className="p-8">{t("onboarding.loading")}</div>
             </MainLayout>
         );
     }

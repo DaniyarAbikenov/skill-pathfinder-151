@@ -12,8 +12,8 @@ export default function Progress() {
 
   const handleClaimReward = (rewardId: string) => {
     toast({
-      title: "Награда получена!",
-      description: "Поздравляем с достижением",
+      title: t("progress.rewardClaimed"),
+      description: t("progress.congratulations"),
     });
   };
 
@@ -24,10 +24,10 @@ export default function Progress() {
   };
 
   const rewards = [
-    { id: "r1", name: "Первый шаг", description: "Завершите первую неделю плана", available: true, claimed: false, icon: Target },
-    { id: "r2", name: "Собеседование пройдено", description: "Наберите 70+ баллов", available: true, claimed: false, icon: MessageSquare },
-    { id: "r3", name: "Мастер резюме", description: "Создайте 3 версии резюме", available: true, claimed: false, icon: FileText },
-    { id: "r4", name: "Упорство", description: "Завершите 5 недель плана", available: false, claimed: false, icon: Trophy },
+    { id: "r1", name: t("progress.rewards.firstStep"), description: t("progress.rewards.firstStepDesc"), available: true, claimed: false, icon: Target },
+    { id: "r2", name: t("progress.rewards.interviewPassed"), description: t("progress.rewards.interviewPassedDesc"), available: true, claimed: false, icon: MessageSquare },
+    { id: "r3", name: t("progress.rewards.resumeMaster"), description: t("progress.rewards.resumeMasterDesc"), available: true, claimed: false, icon: FileText },
+    { id: "r4", name: t("progress.rewards.persistence"), description: t("progress.rewards.persistenceDesc"), available: false, claimed: false, icon: Trophy },
   ];
 
   return (
@@ -42,12 +42,12 @@ export default function Progress() {
 
         <div className="grid gap-6 md:grid-cols-3">
           <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <Target className="h-5 w-5 text-primary" />
-                План обучения
-              </CardTitle>
-            </CardHeader>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-lg">
+              <Target className="h-5 w-5 text-primary" />
+              {t("progress.plan")}
+            </CardTitle>
+          </CardHeader>
             <CardContent>
               <div className="space-y-2">
                 <div className="text-3xl font-bold">
@@ -69,12 +69,12 @@ export default function Progress() {
           </Card>
 
           <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <MessageSquare className="h-5 w-5 text-primary" />
-                Интервью
-              </CardTitle>
-            </CardHeader>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-lg">
+              <MessageSquare className="h-5 w-5 text-primary" />
+              {t("progress.interview")}
+            </CardTitle>
+          </CardHeader>
             <CardContent>
               <div className="space-y-2">
                 <div className="text-3xl font-bold">{stats.avgInterviewScore}</div>
@@ -82,19 +82,19 @@ export default function Progress() {
                   {t("progress.interviewScore")}
                 </p>
                 <Badge variant={stats.avgInterviewScore >= 70 ? "default" : "secondary"} className="mt-4">
-                  {stats.avgInterviewScore >= 70 ? "Отлично" : "Хорошо"}
+                  {stats.avgInterviewScore >= 70 ? t("progress.excellent") : t("progress.good")}
                 </Badge>
               </div>
             </CardContent>
           </Card>
 
           <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <FileText className="h-5 w-5 text-primary" />
-                Резюме
-              </CardTitle>
-            </CardHeader>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-lg">
+              <FileText className="h-5 w-5 text-primary" />
+              {t("progress.resume")}
+            </CardTitle>
+          </CardHeader>
             <CardContent>
               <div className="space-y-2">
                 <div className="text-3xl font-bold">{stats.resumeIndex}</div>
@@ -123,7 +123,7 @@ export default function Progress() {
               {t("progress.rewards.title")}
             </CardTitle>
             <CardDescription>
-              Получайте бейджи за выполнение целей
+              {t("progress.earnBadges")}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -159,12 +159,12 @@ export default function Progress() {
                         )}
                         {!reward.available && (
                           <Badge variant="outline" className="mt-2">
-                            Заблокировано
+                            {t("progress.locked")}
                           </Badge>
                         )}
                         {reward.claimed && (
                           <Badge variant="default" className="mt-2">
-                            Получено
+                            {t("progress.claimed")}
                           </Badge>
                         )}
                       </div>
@@ -178,12 +178,12 @@ export default function Progress() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Рекомендации</CardTitle>
+            <CardTitle>{t("progress.recommendations")}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-2 text-sm text-muted-foreground">
-            <p>• Завершите еще 2 недели плана, чтобы получить награду "Упорство"</p>
-            <p>• Пройдите еще одну тренировку интервью для улучшения среднего балла</p>
-            <p>• Создайте версию резюме под новую вакансию</p>
+            <p>• {t("progress.recommendationsList.completePlan")}</p>
+            <p>• {t("progress.recommendationsList.improveInterview")}</p>
+            <p>• {t("progress.recommendationsList.createResume")}</p>
           </CardContent>
         </Card>
       </div>

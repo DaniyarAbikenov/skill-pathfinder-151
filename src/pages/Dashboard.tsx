@@ -14,8 +14,8 @@ export default function Dashboard() {
 
   const handleCreatePlan = () => {
     toast({
-      title: "Создание плана...",
-      description: "Генерируем персональный план обучения",
+      title: t("dashboard.plan.creatingPlan"),
+      description: t("dashboard.plan.generatingPlan"),
     });
     setTimeout(() => navigate("/plan/p_demo"), 1000);
   };
@@ -75,7 +75,7 @@ export default function Dashboard() {
                 <Briefcase className="h-5 w-5 text-primary" />
                 {t("dashboard.plan.title")}
               </CardTitle>
-              <CardDescription>Ваш путь к цели</CardDescription>
+              <CardDescription>{t("dashboard.plan.yourPath")}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-sm text-muted-foreground">
@@ -107,7 +107,7 @@ export default function Dashboard() {
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-sm text-muted-foreground">
-                Загрузите резюме, проанализируйте и адаптируйте под конкретные вакансии.
+                {t("dashboard.resume.uploadDescription")}
               </p>
               
               <Button 
@@ -120,7 +120,7 @@ export default function Dashboard() {
 
               <div className="pt-2 border-t">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-muted-foreground">Версий:</span>
+                  <span className="text-muted-foreground">{t("dashboard.resume.versions")}:</span>
                   <span className="font-medium">3</span>
                 </div>
               </div>
@@ -132,21 +132,21 @@ export default function Dashboard() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <TrendingUp className="h-5 w-5 text-primary" />
-              Быстрая статистика
+              {t("dashboard.stats.title")}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid gap-4 md:grid-cols-3">
               <div className="space-y-1">
                 <p className="text-sm text-muted-foreground">{t("progress.planSteps")}</p>
-                <p className="text-2xl font-bold">3 из 10</p>
+                <p className="text-2xl font-bold">3 {t("common.of")} 10</p>
               </div>
               <div className="space-y-1">
                 <p className="text-sm text-muted-foreground">{t("progress.interviewScore")}</p>
                 <p className="text-2xl font-bold">74</p>
               </div>
               <div className="space-y-1">
-                <p className="text-sm text-muted-foreground">Версий резюме</p>
+                <p className="text-sm text-muted-foreground">{t("dashboard.stats.resumeVersions")}</p>
                 <p className="text-2xl font-bold">3</p>
               </div>
             </div>

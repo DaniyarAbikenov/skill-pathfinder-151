@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { User } from "lucide-react";
@@ -15,6 +16,7 @@ import {
 import { getAuth, signOut } from "firebase/auth";
 
 export function TopBar() {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const auth = getAuth();
 
@@ -50,13 +52,13 @@ export function TopBar() {
 
                     <DropdownMenuContent align="end" className="w-48">
                         <DropdownMenuItem onClick={() => navigate("/onboarding")}>
-                            Изменить профиль
+                            {t("topBar.editProfile")}
                         </DropdownMenuItem>
 
                         <DropdownMenuSeparator />
 
                         <DropdownMenuItem onClick={handleLogout}>
-                            Выйти
+                            {t("topBar.logout")}
                         </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>

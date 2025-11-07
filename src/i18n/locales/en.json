@@ -24,7 +24,20 @@
     "redirect": "Redirecting...",
     "noAccount": "Don't have an account?",
     "registerNow": "Register now",
-    "policies": "Policies and Agreements"
+    "policies": "Policies and Agreements",
+    "invalidCredentials": "Invalid email or password",
+    "googleError": "Failed to sign in with Google"
+  },
+  "register": {
+    "title": "Registration",
+    "subtitle": "Create new account",
+    "confirmPassword": "Confirm Password",
+    "submit": "Register",
+    "haveAccount": "Already have an account?",
+    "passwordMismatch": "Passwords do not match",
+    "passwordWeak": "Password must be at least 6 characters",
+    "success": "Registration completed",
+    "error": "Registration failed"
   },
   "onboarding": {
     "title": "Profile",
@@ -39,7 +52,12 @@
     "save": "Save Profile",
     "evaluateSkills": "Evaluate Skills",
     "toDashboard": "Go to Dashboard",
-    "normalizedSkills": "Normalized Skills"
+    "normalizedSkills": "Normalized Skills",
+    "loading": "Loading...",
+    "unauthorized": "You are not authorized",
+    "fillRequired": "Fill in all required fields",
+    "profileSaved": "Profile saved",
+    "skillsProcessed": "Skills processed"
   },
   "dashboard": {
     "title": "Dashboard",
@@ -53,12 +71,21 @@
       "title": "Learning Plan",
       "create": "Create Plan",
       "open": "Open Plan",
-      "noPlan": "You don't have a learning plan yet"
+      "noPlan": "You don't have a learning plan yet",
+      "yourPath": "Your path to the goal",
+      "creatingPlan": "Creating plan...",
+      "generatingPlan": "Generating personalized learning plan"
     },
     "resume": {
       "title": "Resume",
       "goto": "Go to Resume",
-      "description": "Upload and adapt your resume"
+      "description": "Upload and adapt your resume",
+      "uploadDescription": "Upload your resume, analyze and adapt it for jobs",
+      "versions": "Versions"
+    },
+    "stats": {
+      "title": "Quick Stats",
+      "resumeVersions": "Resume Versions"
     }
   },
   "resume": {
@@ -71,7 +98,14 @@
       "parse": "Parse Resume",
       "uploaded": "File uploaded",
       "tooBig": "File too large",
-      "tooBigDesc": "File size must not exceed 5 MB"
+      "tooBigDesc": "File size must not exceed 5 MB",
+      "uploadDescription": "Upload PDF file to start processing",
+      "selectFile": "Click to select PDF",
+      "onlyPdf": "PDF only, up to 5 MB",
+      "continue": "Continue",
+      "fileSelected": "File selected",
+      "uploadError": "Upload error",
+      "uploadErrorDesc": "Failed to upload file. Please try again."
     },
     "parsed": {
       "title": "Parsed Data",
@@ -106,6 +140,7 @@
   "plan": {
     "title": "Learning Plan",
     "week": "Week",
+    "weeks": "weeks",
     "goals": "Goals",
     "sources": "Sources",
     "done": "Done",
@@ -113,13 +148,26 @@
     "export": "Export to Doc",
     "notebookLM": "Create audio/video overview (NotebookLM)",
     "exported": "Sent",
-    "exportedDesc": "Link will come in API response"
+    "exportedDesc": "Link will come in API response",
+    "personalPlan": "Personal 8-week development plan"
   },
   "interview": {
     "title": "Interview Practice",
     "subtitle": "Practice your interview answers",
     "selectRole": "Select Role",
     "start": "Start Practice",
+    "selectRoleError": "Select a role",
+    "selectRoleErrorDesc": "Please select a role to practice",
+    "startingPractice": "Starting practice",
+    "loadingQuestions": "Loading questions...",
+    "description": "Select a role and go through a series of questions. You will receive detailed feedback on each answer.",
+    "whatToExpect": "What to expect:",
+    "technicalQuestions": "5-7 technical questions",
+    "textFormat": "Text answer format",
+    "detailedFeedback": "Detailed feedback upon completion",
+    "improvements": "Recommendations for improvement",
+    "history": "Practice History",
+    "score": "Score",
     "session": {
       "question": "Question",
       "answer": "Your Answer",
@@ -143,9 +191,33 @@
     "planSteps": "Plan Steps Completed",
     "interviewScore": "Average Interview Score",
     "resumeIndex": "Resume Improvement Index",
+    "plan": "Learning Plan",
+    "interview": "Interview",
+    "resume": "Resume",
+    "excellent": "Excellent",
+    "good": "Good",
+    "locked": "Locked",
+    "claimed": "Claimed",
+    "recommendations": "Recommendations",
+    "rewardClaimed": "Reward claimed!",
+    "congratulations": "Congratulations on your achievement",
+    "earnBadges": "Earn badges for completing goals",
     "rewards": {
       "title": "Rewards",
-      "claim": "Claim"
+      "claim": "Claim",
+      "firstStep": "First Step",
+      "firstStepDesc": "Complete the first week of the plan",
+      "interviewPassed": "Interview Passed",
+      "interviewPassedDesc": "Score 70+ points",
+      "resumeMaster": "Resume Master",
+      "resumeMasterDesc": "Create 3 resume versions",
+      "persistence": "Persistence",
+      "persistenceDesc": "Complete 5 weeks of the plan"
+    },
+    "recommendationsList": {
+      "completePlan": "Complete 2 more weeks of the plan to earn the 'Persistence' reward",
+      "improveInterview": "Take another interview practice to improve your average score",
+      "createResume": "Create a resume version for a new job"
     }
   },
   "settings": {
@@ -190,12 +262,92 @@
     "loading": "Loading...",
     "updated": "Updated"
   },
+  "support": {
+    "title": "Support",
+    "description": "We are always ready to help you. Choose a convenient contact method.",
+    "email": {
+      "title": "Email",
+      "description": "We'll respond within 24 hours",
+      "action": "Send Email"
+    },
+    "chat": {
+      "title": "Online Chat",
+      "description": "Quick help in real time",
+      "action": "Start Chat"
+    },
+    "phone": {
+      "title": "Phone",
+      "description": "Call us during business hours",
+      "action": "View Number"
+    },
+    "form": {
+      "title": "Feedback Form",
+      "description": "Describe your issue and we'll contact you",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Submit"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "description": "Answers to popular questions about working with the platform",
+    "general": "General Questions",
+    "items": {
+      "1": {
+        "question": "How do I get started with the platform?",
+        "answer": "After registration, complete the questionnaire, specify your target role and current skills. The system will automatically create a personalized career development plan."
+      },
+      "2": {
+        "question": "How do I upload my resume?",
+        "answer": "Go to the 'Resume' section and click the 'Upload Resume' button. PDF, DOC, DOCX formats are supported. After uploading, the system will analyze your resume and suggest improvements."
+      },
+      "3": {
+        "question": "What is a learning plan?",
+        "answer": "A learning plan is a personalized skill development program created based on your target role and current competencies. It includes recommendations for courses, projects, and materials to study."
+      },
+      "4": {
+        "question": "How do I prepare for an interview?",
+        "answer": "In the 'Interview' section, you can select your desired role and go through an interview simulation. The system will ask relevant questions and provide feedback on your answers."
+      },
+      "5": {
+        "question": "Can I change my target role?",
+        "answer": "Yes, you can change your target role at any time in the 'Settings' section. The system will automatically update your learning plan and recommendations."
+      },
+      "6": {
+        "question": "How do I track my progress?",
+        "answer": "The 'Progress' section displays statistics on learning plan completion, interview simulation results, and resume improvement index."
+      },
+      "7": {
+        "question": "Is the platform paid?",
+        "answer": "The basic version of the platform is free. Premium features such as detailed resume analysis and unlimited interview simulations are available by subscription."
+      },
+      "8": {
+        "question": "How do I change the interface language?",
+        "answer": "The interface language can be changed in the 'Settings' section or via the language switcher at the top of the page. Russian, English, and Kazakh languages are available."
+      }
+    }
+  },
+  "topBar": {
+    "editProfile": "Edit Profile",
+    "logout": "Logout"
+  },
+  "notFound": {
+    "title": "404",
+    "description": "Oops! Page not found",
+    "returnHome": "Return to Home"
+  },
+  "index": {
+    "welcome": "Welcome to Your Blank App",
+    "subtitle": "Start building your amazing project here!"
+  },
   "common": {
     "loading": "Loading...",
     "error": "Error",
     "errorDesc": "Something went wrong. Please try again.",
     "success": "Success",
     "cancel": "Cancel",
-    "save": "Save"
+    "save": "Save",
+    "of": "of"
   }
 }

@@ -30,7 +30,7 @@ export default function Login() {
             toast({ title: t("login.success") ?? "Вход выполнен", description: t("login.redirect") ?? "Перенаправление..." });
             navigate("/dashboard");
         } catch (err: any) {
-            toast({ title: t("common.error"), description: err?.message ?? "Неверный email или пароль", variant: "destructive" });
+            toast({ title: t("common.error"), description: err?.message ?? t("login.invalidCredentials"), variant: "destructive" });
         } finally {
             setSubmitting(false);
         }
@@ -43,7 +43,7 @@ export default function Login() {
             toast({ title: t("login.success") ?? "Вход выполнен", description: t("login.redirect") ?? "Перенаправление..." });
             navigate("/onboarding");
         } catch (err: any) {
-            toast({ title: t("common.error"), description: err?.message ?? "Не удалось войти через Google", variant: "destructive" });
+            toast({ title: t("common.error"), description: err?.message ?? t("login.googleError"), variant: "destructive" });
         } finally {
             setSubmitting(false);
         }

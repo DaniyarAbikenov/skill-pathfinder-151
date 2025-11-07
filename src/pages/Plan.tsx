@@ -107,14 +107,14 @@ export default function Plan() {
     <MainLayout>
       <div className="p-6 max-w-5xl mx-auto space-y-6">
         <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold mb-2">{t("plan.title")}</h1>
-            <p className="text-muted-foreground">
-              Персональный 8-недельный план развития
-            </p>
-          </div>
+            <div>
+              <h1 className="text-3xl font-bold mb-2">{t("plan.title")}</h1>
+              <p className="text-muted-foreground">
+                {t("plan.personalPlan")}
+              </p>
+            </div>
           <Badge variant="outline" className="text-sm">
-            {Object.values(weekProgress).filter(Boolean).length} / {mockPlan.weeks.length} недель
+            {Object.values(weekProgress).filter(Boolean).length} {t("common.of")} {mockPlan.weeks.length} {t("plan.weeks")}
           </Badge>
         </div>
 

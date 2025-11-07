@@ -41,7 +41,7 @@ export default function Register() {
             toast({ title: t("register.success") ?? "Регистрация завершена", description: t("login.redirect") ?? "Перенаправление..." });
             navigate("/onboarding");
         } catch (err) {
-            toast({ title: t("common.error"), description: err?.message ?? "Не удалось зарегистрироваться", variant: "destructive" });
+            toast({ title: t("common.error"), description: err?.message ?? t("register.error"), variant: "destructive" });
         } finally {
             setSubmitting(false);
         }

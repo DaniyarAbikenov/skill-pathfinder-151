@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,7 @@ import { uploadResume } from "@/api/resume";
 import { useResumeStore } from "@/store/resumeStore";
 
 export default function Resume() {
+    const { t } = useTranslation();
     const [file, setFile] = useState<File | null>(null);
     const { toast } = useToast();
     const setResumeId = useResumeStore((s) => s.setResumeId);
@@ -21,15 +23,15 @@ export default function Resume() {
         if (selectedFile) {
             if (selectedFile.size > 5 * 1024 * 1024) {
                 toast({
-                    title: "Файл слишком большой",
-                    description: "Максимальный размер 5 МБ",
+                    title: t("resume.upload.tooBig"),
+                    description: t("resume.upload.tooBigDesc"),
                     variant: "destructive",
                 });
                 return;
             }
             setFile(selectedFile);
             toast({
-                title: "Файл выбран",
+                title: t("resume.upload.fileSelected"),
                 description: selectedFile.name,
             });
         }
@@ -49,8 +51,8 @@ export default function Resume() {
         } catch (err) {
             console.error(err);
             toast({
-                title: "Ошибка загрузки",
-                description: "Не удалось загрузить файл. Попробуйте снова.",
+                title: t("resume.upload.uploadError"),
+                description: t("resume.upload.uploadErrorDesc"),
                 variant: "destructive",
             });
         }
@@ -60,9 +62,9 @@ export default function Resume() {
         <MainLayout>
             <div className="p-6 max-w-xl mx-auto space-y-6">
                 <div>
-                    <h1 className="text-3xl font-bold mb-2">Резюме</h1>
+                    <h1 className="text-3xl font-bold mb-2">{t("resume.title")}</h1>
                     <p className="text-muted-foreground">
-                        Загрузите PDF-файл резюме, чтобы начать его обработку
+                        {t("resume.upload.uploadDescription")}
                     </p>
                 </div>
 
@@ -70,7 +72,7 @@ export default function Resume() {
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2">
                             <Upload className="h-5 w-5" />
-                            Загрузка резюме
+                            {t("resume.upload.title")}
                         </CardTitle>
                     </CardHeader>
 
@@ -89,10 +91,10 @@ export default function Resume() {
                             >
                                 <FileText className="h-12 w-12 text-muted-foreground" />
                                 <span className="text-sm text-muted-foreground">
-                  {file ? file.name : "Нажмите, чтобы выбрать PDF"}
+                  {file ? file.name : t("resume.upload.selectFile")}
                 </span>
                                 <span className="text-xs text-muted-foreground">
-                  Только PDF, до 5 МБ
+                  {t("resume.upload.onlyPdf")}
                 </span>
                             </Label>
                         </div>
@@ -102,7 +104,7 @@ export default function Resume() {
                             disabled={!file}
                             className="w-full"
                         >
-                            Продолжить
+                            {t("resume.upload.continue")}
                         </Button>
                     </CardContent>
                 </Card>
