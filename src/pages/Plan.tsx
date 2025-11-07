@@ -35,8 +35,8 @@ export default function Plan() {
     weeks: [
       {
         week: 1,
-        title: t("plan.weeks.1.title"),
-        goals: [t("plan.weeks.1.goals.1"), t("plan.weeks.1.goals.2")],
+        title: t("plan.weekData.1.title"),
+        goals: [t("plan.weekData.1.goals.1"), t("plan.weekData.1.goals.2")],
         sources: [
           { title: "MDN HTML Guide", url: "https://developer.mozilla.org" },
           { title: "CSS Tricks - Flexbox", url: "https://css-tricks.com" },
@@ -44,8 +44,8 @@ export default function Plan() {
       },
       {
         week: 2,
-        title: t("plan.weeks.2.title"),
-        goals: [t("plan.weeks.2.goals.1"), t("plan.weeks.2.goals.2"), t("plan.weeks.2.goals.3")],
+        title: t("plan.weekData.2.title"),
+        goals: [t("plan.weekData.2.goals.1"), t("plan.weekData.2.goals.2"), t("plan.weekData.2.goals.3")],
         sources: [
           { title: "JavaScript.info", url: "https://javascript.info" },
           { title: "Eloquent JavaScript", url: "https://eloquentjavascript.net" },
@@ -53,48 +53,48 @@ export default function Plan() {
       },
       {
         week: 3,
-        title: t("plan.weeks.3.title"),
-        goals: [t("plan.weeks.3.goals.1"), t("plan.weeks.3.goals.2"), t("plan.weeks.3.goals.3")],
+        title: t("plan.weekData.3.title"),
+        goals: [t("plan.weekData.3.goals.1"), t("plan.weekData.3.goals.2"), t("plan.weekData.3.goals.3")],
         sources: [
           { title: "Async JavaScript Guide", url: "https://javascript.info/async" },
         ],
       },
       {
         week: 4,
-        title: t("plan.weeks.4.title"),
-        goals: [t("plan.weeks.4.goals.1"), t("plan.weeks.4.goals.2"), t("plan.weeks.4.goals.3")],
+        title: t("plan.weekData.4.title"),
+        goals: [t("plan.weekData.4.goals.1"), t("plan.weekData.4.goals.2"), t("plan.weekData.4.goals.3")],
         sources: [
           { title: "React Official Docs", url: "https://react.dev" },
         ],
       },
       {
         week: 5,
-        title: t("plan.weeks.5.title"),
-        goals: [t("plan.weeks.5.goals.1"), t("plan.weeks.5.goals.2"), t("plan.weeks.5.goals.3")],
+        title: t("plan.weekData.5.title"),
+        goals: [t("plan.weekData.5.goals.1"), t("plan.weekData.5.goals.2"), t("plan.weekData.5.goals.3")],
         sources: [
           { title: "React Hooks API", url: "https://react.dev/reference/react" },
         ],
       },
       {
         week: 6,
-        title: t("plan.weeks.6.title"),
-        goals: [t("plan.weeks.6.goals.1"), t("plan.weeks.6.goals.2"), t("plan.weeks.6.goals.3")],
+        title: t("plan.weekData.6.title"),
+        goals: [t("plan.weekData.6.goals.1"), t("plan.weekData.6.goals.2"), t("plan.weekData.6.goals.3")],
         sources: [
           { title: "TypeScript Handbook", url: "https://typescriptlang.org" },
         ],
       },
       {
         week: 7,
-        title: t("plan.weeks.7.title"),
-        goals: [t("plan.weeks.7.goals.1"), t("plan.weeks.7.goals.2"), t("plan.weeks.7.goals.3")],
+        title: t("plan.weekData.7.title"),
+        goals: [t("plan.weekData.7.goals.1"), t("plan.weekData.7.goals.2"), t("plan.weekData.7.goals.3")],
         sources: [
           { title: "Redux Toolkit Docs", url: "https://redux-toolkit.js.org" },
         ],
       },
       {
         week: 8,
-        title: t("plan.weeks.8.title"),
-        goals: [t("plan.weeks.8.goals.1"), t("plan.weeks.8.goals.2"), t("plan.weeks.8.goals.3")],
+        title: t("plan.weekData.8.title"),
+        goals: [t("plan.weekData.8.goals.1"), t("plan.weekData.8.goals.2"), t("plan.weekData.8.goals.3")],
         sources: [
           { title: "Testing Library", url: "https://testing-library.com" },
         ],

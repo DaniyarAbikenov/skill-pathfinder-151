@@ -163,7 +163,7 @@
     "exportedDesc": "Link will come in API response",
     "personalPlan": "Personal 8-week development plan",
     "planExplanation": "The plan is tailored for the Frontend Developer role considering current skills. Focus on React and TypeScript as these are key requirements for most positions. Final weeks cover state management and testing — this will help you stand out among junior developers.",
-    "weeks": {
+    "weekData": {
       "1": {
         "title": "HTML/CSS Basics",
         "goals": {
