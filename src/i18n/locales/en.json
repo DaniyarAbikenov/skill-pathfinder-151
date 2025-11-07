@@ -353,6 +353,12 @@
     "success": "Success",
     "cancel": "Cancel",
     "save": "Save",
-    "of": "of"
+    "of": "of",
+    "select": "Select...",
+    "selected": "selected",
+    "search": "Search...",
+    "notFound": "Not found",
+    "enterCustom": "Or enter your own...",
+    "language": "Language"
   }
 }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Check, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -14,9 +15,12 @@ interface MultiSelectProps {
   allowCustom?: boolean;
 }
 
-export function MultiSelect({ options, selected, onChange, placeholder = "Выберите...", allowCustom = false }: MultiSelectProps) {
+export function MultiSelect({ options, selected, onChange, placeholder, allowCustom = false }: MultiSelectProps) {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [customValue, setCustomValue] = useState("");
+  
+  const displayPlaceholder = placeholder || t("common.select");
 
   const handleSelect = (value: string) => {
     if (selected.includes(value)) {
@@ -38,14 +42,14 @@ export function MultiSelect({ options, selected, onChange, placeholder = "Выб
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button variant="outline" className="w-full justify-start">
-            {selected.length > 0 ? `${selected.length} выбрано` : placeholder}
+            {selected.length > 0 ? `${selected.length} ${t("common.selected")}` : displayPlaceholder}
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-full p-0 bg-background" align="start">
           <Command>
-            <CommandInput placeholder="Поиск..." />
+            <CommandInput placeholder={t("common.search")} />
             <CommandList>
-              <CommandEmpty>Не найдено</CommandEmpty>
+              <CommandEmpty>{t("common.notFound")}</CommandEmpty>
               <CommandGroup>
                 {options.map((option) => (
                   <CommandItem key={option} onSelect={() => handleSelect(option)}>
@@ -64,7 +68,7 @@ export function MultiSelect({ options, selected, onChange, placeholder = "Выб
           <Input
             value={customValue}
             onChange={(e) => setCustomValue(e.target.value)}
-            placeholder="Или введите свою..."
+            placeholder={t("common.enterCustom")}
             onKeyDown={(e) => e.key === "Enter" && handleAddCustom()}
           />
           <Button onClick={handleAddCustom} size="sm">+</Button>
