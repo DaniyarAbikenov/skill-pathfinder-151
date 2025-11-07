@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useInterviewStore } from "@/store/useInterviewStore";
 import { answerInterview } from "@/api/interview";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { MainLayout } from "@/components/layout/MainLayout.tsx";
 
 export default function InterviewSession() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const {
@@ -38,7 +40,7 @@ export default function InterviewSession() {
     // ✅ показываем правильный ответ
     addMessage({
       role: "interviewer",
-      text: `Correct answer: ${res.correct_answer}`
+      text: `${t("interview.session.correctAnswer")} ${res.correct_answer}`
     });
 
     // ✅ если интервью закончено
@@ -65,10 +67,10 @@ export default function InterviewSession() {
 
           {/* ✅ Индикатор прогресса в углу */}
           <div className="absolute top-4 right-4 text-sm text-gray-600 font-medium">
-            Question {currentIndex + 1} / {totalQuestions}
+            {t("interview.session.questionProgress", { current: currentIndex + 1, total: totalQuestions })}
           </div>
 
-          <h1 className="text-xl font-bold">Interview</h1>
+          <h1 className="text-xl font-bold">{t("interview.session.title")}</h1>
 
           <div className="border rounded p-4 space-y-3 h-[60vh] overflow-y-auto bg-white">
             {messages.map((m, i) => (
@@ -93,11 +95,11 @@ export default function InterviewSession() {
                     className="flex-1 border rounded p-2"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    placeholder="Your answer…"
+                    placeholder={t("interview.session.answerPlaceholder")}
                     disabled={loading}
                 />
                 <Button disabled={loading || !input.trim()} onClick={send}>
-                  {loading ? "..." : "Send"}
+                  {loading ? t("interview.session.loading") : t("interview.session.send")}
                 </Button>
               </div>
           )}

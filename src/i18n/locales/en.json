@@ -246,13 +246,29 @@
     "improvements": "Recommendations for improvement",
     "history": "Practice History",
     "score": "Score",
+    "startPage": {
+      "title": "Start Interview",
+      "companyDesc": "Company description",
+      "jobDesc": "Job description",
+      "techStack": "Tech stack",
+      "styleTheoretical": "Theoretical",
+      "stylePractical": "Practical",
+      "styleMixed": "Mixed",
+      "starting": "Starting…",
+      "startButton": "Start"
+    },
     "session": {
       "question": "Question",
       "answer": "Your Answer",
-      "answerPlaceholder": "Enter your answer...",
+      "answerPlaceholder": "Your answer…",
       "prev": "Previous",
       "next": "Next",
       "finish": "Finish",
+      "send": "Send",
+      "loading": "...",
+      "title": "Interview",
+      "correctAnswer": "Correct answer:",
+      "questionProgress": "Question {current} of {total}",
       "feedback": {
         "title": "Feedback",
         "score": "Score",
@@ -261,6 +277,11 @@
         "examples": "Example Phrases",
         "resources": "Resources"
       }
+    },
+    "result": {
+      "title": "Interview Completed",
+      "completed": "You finished the interview.",
+      "restart": "Restart"
     }
   },
   "progress": {

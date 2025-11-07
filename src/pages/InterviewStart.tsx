@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { startInterview } from "@/api/interview";
 import { useInterviewStore } from "@/store/useInterviewStore";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import {MainLayout} from "@/components/layout/MainLayout.tsx";
 
 export default function InterviewStart() {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const {
         setSessionId,
@@ -55,22 +57,22 @@ export default function InterviewStart() {
     return (
         <MainLayout>
             <div className="p-8 max-w-xl mx-auto space-y-4">
-                <h1 className="text-2xl font-bold">Start Interview</h1>
+                <h1 className="text-2xl font-bold">{t("interview.startPage.title")}</h1>
 
                 <Textarea
-                    placeholder="Company description"
+                    placeholder={t("interview.startPage.companyDesc")}
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
                 />
 
                 <Textarea
-                    placeholder="Job description"
+                    placeholder={t("interview.startPage.jobDesc")}
                     value={job}
                     onChange={(e) => setJob(e.target.value)}
                 />
 
                 <Textarea
-                    placeholder="Tech stack"
+                    placeholder={t("interview.startPage.techStack")}
                     value={stack}
                     onChange={(e) => setStack(e.target.value)}
                 />
@@ -80,9 +82,9 @@ export default function InterviewStart() {
                     onChange={(e) => setStyle(e.target.value)}
                     className="border p-2 rounded"
                 >
-                    <option value="theoretical">Theoretical</option>
-                    <option value="practical">Practical</option>
-                    <option value="mixed">Mixed</option>
+                    <option value="theoretical">{t("interview.startPage.styleTheoretical")}</option>
+                    <option value="practical">{t("interview.startPage.stylePractical")}</option>
+                    <option value="mixed">{t("interview.startPage.styleMixed")}</option>
                 </select>
 
                 <Button
@@ -93,10 +95,10 @@ export default function InterviewStart() {
                     {isLoading ? (
                         <div className="flex items-center gap-2">
                             <span className="w-4 h-4 border-2 border-t-transparent border-white rounded-full animate-spin" />
-                            Starting…
+                            {t("interview.startPage.starting")}
                         </div>
                     ) : (
-                        "Start"
+                        t("interview.startPage.startButton")
                     )}
                 </Button>
             </div>

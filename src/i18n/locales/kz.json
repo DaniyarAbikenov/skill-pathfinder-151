@@ -246,13 +246,29 @@
     "improvements": "Жақсартуға ұсыныстар",
     "history": "Жаттығу тарихы",
     "score": "Ұпай",
+    "startPage": {
+      "title": "Сұхбатты бастау",
+      "companyDesc": "Компания сипаттамасы",
+      "jobDesc": "Жұмыс сипаттамасы",
+      "techStack": "Технологиялық стек",
+      "styleTheoretical": "Теориялық",
+      "stylePractical": "Практикалық",
+      "styleMixed": "Аралас",
+      "starting": "Басталуда…",
+      "startButton": "Бастау"
+    },
     "session": {
       "question": "Сұрақ",
       "answer": "Сіздің жауабыңыз",
-      "answerPlaceholder": "Жауабыңызды енгізіңіз...",
+      "answerPlaceholder": "Жауабыңыз…",
       "prev": "Артқа",
       "next": "Әрі қарай",
       "finish": "Аяқтау",
+      "send": "Жіберу",
+      "loading": "...",
+      "title": "Сұхбат",
+      "correctAnswer": "Дұрыс жауап:",
+      "questionProgress": "Сұрақ {current} / {total}",
       "feedback": {
         "title": "Кері байланыс",
         "score": "Бағасы",
@@ -261,6 +277,11 @@
         "examples": "Тұжырымдама мысалдары",
         "resources": "Ресурстар"
       }
+    },
+    "result": {
+      "title": "Сұхбат аяқталды",
+      "completed": "Сіз сұхбатты аяқтадыңыз.",
+      "restart": "Қайта бастау"
     }
   },
   "progress": {

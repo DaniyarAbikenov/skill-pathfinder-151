@@ -246,13 +246,29 @@
     "improvements": "Рекомендации по улучшению",
     "history": "История тренировок",
     "score": "Балл",
+    "startPage": {
+      "title": "Начать интервью",
+      "companyDesc": "Описание компании",
+      "jobDesc": "Описание вакансии",
+      "techStack": "Технологический стек",
+      "styleTheoretical": "Теоретический",
+      "stylePractical": "Практический",
+      "styleMixed": "Смешанный",
+      "starting": "Начинаем…",
+      "startButton": "Начать"
+    },
     "session": {
       "question": "Вопрос",
       "answer": "Ваш ответ",
-      "answerPlaceholder": "Введите ваш ответ...",
+      "answerPlaceholder": "Ваш ответ…",
       "prev": "Назад",
       "next": "Далее",
       "finish": "Завершить",
+      "send": "Отправить",
+      "loading": "...",
+      "title": "Интервью",
+      "correctAnswer": "Правильный ответ:",
+      "questionProgress": "Вопрос {current} из {total}",
       "feedback": {
         "title": "Обратная связь",
         "score": "Оценка",
@@ -261,6 +277,11 @@
         "examples": "Примеры формулировок",
         "resources": "Ресурсы"
       }
+    },
+    "result": {
+      "title": "Интервью завершено",
+      "completed": "Вы завершили интервью.",
+      "restart": "Начать заново"
     }
   },
   "progress": {
