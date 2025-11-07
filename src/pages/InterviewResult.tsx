@@ -13,6 +13,12 @@ export default function InterviewResult() {
                 <h1 className="text-2xl font-bold">Interview Completed</h1>
 
                 <p className="text-lg">You finished the interview.</p>
+                <Button
+                    className="w-full"
+                    onClick={() => navigate("/interview/summary")}
+                >
+                    View Summary
+                </Button>
 
                 <Button
                     className="w-full"

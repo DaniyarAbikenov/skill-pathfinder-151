@@ -9,7 +9,6 @@ import Dashboard from "./pages/Dashboard";
 import Resume from "./pages/Resume";
 import ResumeVersions from "./pages/ResumeVersions";
 import Plan from "./pages/Plan";
-import Interview from "./pages/Interview";
 import InterviewSession from "./pages/InterviewSession";
 import Progress from "./pages/Progress";
 import Settings from "./pages/Settings";
@@ -26,6 +25,7 @@ import ResumeEdit from "@/pages/ResumeEdit.tsx";
 import ImprovementsPage from "@/pages/ImprovementsPage.tsx";
 import InterviewStart from "@/pages/InterviewStart.tsx";
 import InterviewResult from "@/pages/InterviewResult.tsx";
+import InterviewSummary from "@/pages/InterviewSummary.tsx";
 
 const queryClient = new QueryClient();
 
@@ -154,6 +154,7 @@ const App = () => (
                     <Route path="/interview" element={<InterviewStart />} />
                     <Route path="/interview/session" element={<InterviewSession />} />
                     <Route path="/interview/result" element={<InterviewResult />} />
+                    <Route path="/interview/summary" element={<InterviewSummary />} />
 
                     <Route path="/support" element={<Support/>}/>
                     <Route path="/faq" element={<FAQ/>}/>
