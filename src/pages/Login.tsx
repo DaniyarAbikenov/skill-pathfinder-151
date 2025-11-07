@@ -21,16 +21,37 @@ export default function Login() {
     const onSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!email || !password) {
-            toast({ title: t("common.error"), description: t("login.fillAll") ?? "Заполните все поля", variant: "destructive" });
+            toast({ title: t("common.error"), description: t("login.fillAll"), variant: "destructive" });
             return;
         }
         try {
             setSubmitting(true);
             await loginWithEmail(email, password);
-            toast({ title: t("login.success") ?? "Вход выполнен", description: t("login.redirect") ?? "Перенаправление..." });
+            toast({ title: t("login.success"), description: t("login.redirect") });
             navigate("/dashboard");
         } catch (err: any) {
-            toast({ title: t("common.error"), description: err?.message ?? t("login.invalidCredentials"), variant: "destructive" });
+            console.error("Login error:", err);
+            
+            let errorMessage = t("login.invalidCredentials");
+            
+            // Обработка специфичных ошибок Firebase
+            if (err?.code === "auth/invalid-credential" || err?.code === "auth/wrong-password") {
+                errorMessage = t("login.invalidCredential");
+            } else if (err?.code === "auth/user-not-found") {
+                errorMessage = t("login.invalidCredentials");
+            } else if (err?.code === "auth/too-many-requests") {
+                errorMessage = "Too many failed attempts. Please try again later.";
+            } else if (err?.code === "auth/network-request-failed") {
+                errorMessage = t("login.domainError");
+            } else if (err?.message?.includes("INVALID_LOGIN_CREDENTIALS")) {
+                errorMessage = t("login.invalidCredential");
+            }
+            
+            toast({ 
+                title: t("common.error"), 
+                description: errorMessage, 
+                variant: "destructive" 
+            });
         } finally {
             setSubmitting(false);
         }

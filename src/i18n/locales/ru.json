@@ -26,7 +26,9 @@
     "registerNow": "Зарегистрируйтесь",
     "policies": "Политики и соглашения",
     "invalidCredentials": "Неверный email или пароль",
-    "googleError": "Не удалось войти через Google"
+    "googleError": "Не удалось войти через Google",
+    "invalidCredential": "Неверные данные для входа. Проверьте email и пароль.",
+    "domainError": "Ошибка аутентификации. Обратитесь в поддержку."
   },
   "register": {
     "title": "Регистрация",

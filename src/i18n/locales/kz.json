@@ -26,7 +26,9 @@
     "registerNow": "Тіркеліңіз",
     "policies": "Саясаттар мен келісімдер",
     "invalidCredentials": "Email немесе құпия сөз қате",
-    "googleError": "Google арқылы кіру мүмкін болмады"
+    "googleError": "Google арқылы кіру мүмкін болмады",
+    "invalidCredential": "Кіру деректері қате. Email мен құпия сөзді тексеріңіз.",
+    "domainError": "Аутентификация қатесі. Қолдау қызметіне хабарласыңыз."
   },
   "register": {
     "title": "Тіркелу",
