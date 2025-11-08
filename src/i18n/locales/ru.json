@@ -73,9 +73,9 @@
   },
   "resume": {
     "title": "Резюме",
-    "subtitle": "Загрузите, проанализируйте и адаптируйте резюме под вакансии",
-    "uploadTitle": "Загрузка резюме",
-    "uploadDescription": "Загрузите PDF-файл резюме, чтобы начать его обработку",
+    "subtitle": "Загрузите, проанализируйте и адаптируйте ваше резюме под вакансии",
+    "uploadTitle": "Загрузите ваше резюме",
+    "uploadDescription": "Загрузите PDF файл для начала обработки",
     "fileSelected": "Файл выбран",
     "errorUpload": "Ошибка загрузки",
     "errorUploadDesc": "Не удалось загрузить файл. Попробуйте снова.",
@@ -93,27 +93,69 @@
       "processing": "Обработка…"
     },
     "edit": {
-      "title": "Редактирование резюме",
+      "title": "Редактировать резюме",
       "loading": "Загрузка…",
       "openOriginal": "Открыть оригинальный PDF",
       "jobDescription": "Описание вакансии",
-      "jobDescriptionPlaceholder": "Вставьте описание вакансии здесь…",
+      "jobDescriptionPlaceholder": "Вставьте описание вакансии сюда…",
       "continueButton": "Продолжить → Получить рекомендации",
       "processing": "Обработка…"
     },
     "improve": {
-      "title": "Улучшение резюме",
+      "title": "Улучшить резюме",
       "jobDescription": "Описание вакансии",
-      "jobDescriptionPlaceholder": "Вставьте описание вакансии здесь...",
+      "jobDescriptionPlaceholder": "Вставьте описание вакансии сюда...",
       "continue": "Продолжить",
       "analyzing": "Анализ...",
-      "suggestedImprovements": "Рекомендуемые улучшения",
+      "suggestedImprovements": "Предложенные улучшения",
       "section": "Раздел",
       "type": "Тип",
       "before": "До",
       "after": "После",
       "reason": "Причина",
-      "generatePdf": "Создать PDF (Скоро)"
+      "generatePdf": "Сгенерировать PDF (Скоро)"
+    },
+    "improvements": {
+      "title": "Улучшения резюме",
+      "loading": "Загрузка улучшений...",
+      "noImprovements": "Нет доступных улучшений.",
+      "generateButton": "Сгенерировать новое резюме",
+      "generating": "Генерация..."
+    },
+    "editors": {
+      "summary": {
+        "label": "Профессиональное резюме",
+        "placeholder": "Краткое описание о себе..."
+      },
+      "skills": {
+        "label": "Навыки",
+        "placeholder": "Введите навык",
+        "add": "Добавить"
+      },
+      "education": {
+        "label": "Образование",
+        "add": "Добавить",
+        "institution": "Учебное заведение",
+        "degree": "Степень",
+        "startYear": "Год начала",
+        "endYear": "Год окончания"
+      },
+      "experience": {
+        "label": "Опыт работы",
+        "add": "Добавить опыт",
+        "company": "Компания",
+        "role": "Должность",
+        "dateFrom": "С (2021-01)",
+        "dateTo": "По (2023-03)",
+        "achievements": "Достижения (через запятую)"
+      },
+      "projects": {
+        "label": "Проекты",
+        "add": "Добавить",
+        "title": "Название проекта",
+        "description": "Описание",
+        "tech": "Технологии (через запятую)"
+      }
     },
     "versions": {
       "title": "Версии резюме",

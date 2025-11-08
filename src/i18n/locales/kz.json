@@ -73,7 +73,7 @@
   },
   "resume": {
     "title": "Түйіндеме",
-    "subtitle": "Түйіндемені жүктеңіз, талдаңыз және жұмысқа бейімдеңіз",
+    "subtitle": "Түйіндемені жүктеп, талдаңыз және жұмыс орындарына бейімдеңіз",
     "uploadTitle": "Түйіндемені жүктеу",
     "uploadDescription": "Өңдеуді бастау үшін PDF файлын жүктеңіз",
     "fileSelected": "Файл таңдалды",
@@ -95,25 +95,67 @@
     "edit": {
       "title": "Түйіндемені өңдеу",
       "loading": "Жүктелуде…",
-      "openOriginal": "Бастапқы PDF ашу",
+      "openOriginal": "Түпнұсқа PDF-ті ашу",
       "jobDescription": "Жұмыс сипаттамасы",
-      "jobDescriptionPlaceholder": "Жұмыс сипаттамасын осында қойыңыз…",
-      "continueButton": "Жалғастыру → Ұсыныстарды алу",
+      "jobDescriptionPlaceholder": "Жұмыс сипаттамасын осы жерге қойыңыз…",
+      "continueButton": "Жалғастыру → Ұсыныстар алу",
       "processing": "Өңдеу…"
     },
     "improve": {
       "title": "Түйіндемені жақсарту",
       "jobDescription": "Жұмыс сипаттамасы",
-      "jobDescriptionPlaceholder": "Жұмыс сипаттамасын осында қойыңыз...",
+      "jobDescriptionPlaceholder": "Жұмыс сипаттамасын осы жерге қойыңыз...",
       "continue": "Жалғастыру",
       "analyzing": "Талдау...",
-      "suggestedImprovements": "Ұсынылатын жақсартулар",
+      "suggestedImprovements": "Ұсынылған жақсартулар",
       "section": "Бөлім",
       "type": "Түрі",
-      "before": "Дейін",
+      "before": "Бұрын",
       "after": "Кейін",
       "reason": "Себебі",
       "generatePdf": "PDF жасау (Жақында)"
+    },
+    "improvements": {
+      "title": "Түйіндеме жақсартулары",
+      "loading": "Жақсартулар жүктелуде...",
+      "noImprovements": "Қол жетімді жақсартулар жоқ.",
+      "generateButton": "Жаңа түйіндеме жасау",
+      "generating": "Жасалуда..."
+    },
+    "editors": {
+      "summary": {
+        "label": "Кәсіби түйіндеме",
+        "placeholder": "Өзіңіз туралы қысқаша мәлімет..."
+      },
+      "skills": {
+        "label": "Дағдылар",
+        "placeholder": "Дағдыны енгізіңіз",
+        "add": "Қосу"
+      },
+      "education": {
+        "label": "Білім",
+        "add": "Қосу",
+        "institution": "Оқу орны",
+        "degree": "Дәреже",
+        "startYear": "Бастау жылы",
+        "endYear": "Аяқтау жылы"
+      },
+      "experience": {
+        "label": "Жұмыс тәжірибесі",
+        "add": "Тәжірибе қосу",
+        "company": "Компания",
+        "role": "Лауазым",
+        "dateFrom": "Бастап (2021-01)",
+        "dateTo": "Дейін (2023-03)",
+        "achievements": "Жетістіктер (үтірмен бөлінген)"
+      },
+      "projects": {
+        "label": "Жобалар",
+        "add": "Қосу",
+        "title": "Жоба атауы",
+        "description": "Сипаттама",
+        "tech": "Технологиялар (үтірмен бөлінген)"
+      }
     },
     "versions": {
       "title": "Түйіндеме нұсқалары",

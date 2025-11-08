@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getResumeImprovements } from "@/api/resume"; // API функция для запроса улучшений
+import { useTranslation } from "react-i18next";
+import { getResumeImprovements } from "@/api/resume";
 import { Button } from "@/components/ui/button";
 import {MainLayout} from "@/components/layout/MainLayout.tsx";
 import client from "@/api/client.ts";
 
 export default function ImprovementsPage() {
+    const { t } = useTranslation();
     const { resumeId } = useParams();
     const [improvements, setImprovements] = useState<string[]>([]);
     const [loading, setLoading] = useState(true);
@@ -57,13 +59,17 @@ export default function ImprovementsPage() {
     };
 
     if (loading) {
-        return <div>Loading improvements...</div>;
+        return (
+            <MainLayout>
+                <div className="p-8 text-center">{t("resume.improvements.loading")}</div>
+            </MainLayout>
+        );
     }
 
     return (
         <MainLayout>
             <div className="p-8 max-w-4xl mx-auto space-y-8">
-                <h1 className="text-2xl font-bold">Resume Improvements</h1>
+                <h1 className="text-2xl font-bold">{t("resume.improvements.title")}</h1>
 
                 <div className="space-y-4">
                     {improvements.length > 0 ? (
@@ -75,12 +81,12 @@ export default function ImprovementsPage() {
                             ))}
                         </ul>
                     ) : (
-                        <p>No improvements available.</p>
+                        <p>{t("resume.improvements.noImprovements")}</p>
                     )}
                 </div>
 
                 <Button onClick={handleGeneratePDF} disabled={pdfLoading} className="w-full mt-4">
-                    {pdfLoading ? "Generating..." : "Generate new CV"}
+                    {pdfLoading ? t("resume.improvements.generating") : t("resume.improvements.generateButton")}
                 </Button>
             </div>
 

@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useResumeStore } from "@/store/resumeStore";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -5,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
 export function ResumeExperienceEditor() {
+    const { t } = useTranslation();
     const { fields, updateField } = useResumeStore();
     const experience = fields?.experience || [];
 
@@ -31,32 +33,32 @@ export function ResumeExperienceEditor() {
     return (
         <div className="space-y-6">
             <div className="flex justify-between items-center">
-                <Label>Work Experience</Label>
-                <Button onClick={addExperience}>Add Experience</Button>
+                <Label>{t("resume.editors.experience.label")}</Label>
+                <Button onClick={addExperience}>{t("resume.editors.experience.add")}</Button>
             </div>
 
             {experience.map((exp, i) => (
                 <div key={i} className="border rounded p-4 space-y-3">
                     <Input
-                        placeholder="Company"
+                        placeholder={t("resume.editors.experience.company")}
                         value={exp.company}
                         onChange={(e) => update(i, "company", e.target.value)}
                     />
 
                     <Input
-                        placeholder="Role"
+                        placeholder={t("resume.editors.experience.role")}
                         value={exp.role}
                         onChange={(e) => update(i, "role", e.target.value)}
                     />
 
                     <div className="grid grid-cols-2 gap-2">
                         <Input
-                            placeholder="From (2021-01)"
+                            placeholder={t("resume.editors.experience.dateFrom")}
                             value={exp.date_from}
                             onChange={(e) => update(i, "date_from", e.target.value)}
                         />
                         <Input
-                            placeholder="To (2023-03)"
+                            placeholder={t("resume.editors.experience.dateTo")}
                             value={exp.date_to}
                             onChange={(e) => update(i, "date_to", e.target.value)}
                         />
@@ -64,7 +66,7 @@ export function ResumeExperienceEditor() {
 
                     <Textarea
                         rows={3}
-                        placeholder="Achievements (comma-separated)"
+                        placeholder={t("resume.editors.experience.achievements")}
                         value={(exp.achievements || []).join(", ")}
                         onChange={(e) =>
                             update(i, "achievements", e.target.value.split(",").map((s) => s.trim()))

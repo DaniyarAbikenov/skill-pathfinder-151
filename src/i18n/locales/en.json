@@ -115,6 +115,48 @@
       "reason": "Reason",
       "generatePdf": "Generate PDF (Coming next)"
     },
+    "improvements": {
+      "title": "Resume Improvements",
+      "loading": "Loading improvements...",
+      "noImprovements": "No improvements available.",
+      "generateButton": "Generate new CV",
+      "generating": "Generating..."
+    },
+    "editors": {
+      "summary": {
+        "label": "Professional Summary",
+        "placeholder": "Short introduction about yourself..."
+      },
+      "skills": {
+        "label": "Skills",
+        "placeholder": "Enter skill",
+        "add": "Add"
+      },
+      "education": {
+        "label": "Education",
+        "add": "Add",
+        "institution": "Institution",
+        "degree": "Degree",
+        "startYear": "Start year",
+        "endYear": "End year"
+      },
+      "experience": {
+        "label": "Work Experience",
+        "add": "Add Experience",
+        "company": "Company",
+        "role": "Role",
+        "dateFrom": "From (2021-01)",
+        "dateTo": "To (2023-03)",
+        "achievements": "Achievements (comma-separated)"
+      },
+      "projects": {
+        "label": "Projects",
+        "add": "Add",
+        "title": "Project Title",
+        "description": "Description",
+        "tech": "Tech stack (comma-separated)"
+      }
+    },
     "versions": {
       "title": "Resume Versions",
       "description": "Manage different versions of your resume",

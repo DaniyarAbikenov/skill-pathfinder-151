@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useResumeStore } from "@/store/resumeStore";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -6,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Label } from "@/components/ui/label";
 
 export function ResumeSkillsEditor() {
+    const { t } = useTranslation();
     const { fields, updateField } = useResumeStore();
     const skills = fields?.skills || [];
 
@@ -24,16 +26,16 @@ export function ResumeSkillsEditor() {
 
     return (
         <div className="space-y-3">
-            <Label>Skills</Label>
+            <Label>{t("resume.editors.skills.label")}</Label>
 
             <div className="flex gap-2">
                 <Input
                     value={skillInput}
-                    placeholder="Enter skill"
+                    placeholder={t("resume.editors.skills.placeholder")}
                     onChange={(e) => setSkillInput(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), addSkill())}
                 />
-                <Button onClick={addSkill}>Add</Button>
+                <Button onClick={addSkill}>{t("resume.editors.skills.add")}</Button>
             </div>
 
             <div className="flex flex-wrap gap-2">
