@@ -130,6 +130,44 @@
         "examples": "Тұжырымдама мысалдары",
         "resources": "Ресурстар"
       }
+    },
+    "start": {
+      "title": "Сұхбатты бастау",
+      "company": "Компания сипаттамасы",
+      "companyPlaceholder": "Компания сипаттамасын енгізіңіз...",
+      "job": "Вакансия сипаттамасы",
+      "jobPlaceholder": "Вакансия сипаттамасын енгізіңіз...",
+      "stack": "Техникалық стек",
+      "stackPlaceholder": "Технологияларды енгізіңіз (мысалы, React, Node.js, PostgreSQL)...",
+      "style": "Сұхбат стилі",
+      "styleTheoretical": "Теориялық",
+      "stylePractical": "Практикалық",
+      "styleMixed": "Аралас",
+      "startButton": "Бастау",
+      "starting": "Бастау…"
+    },
+    "result": {
+      "title": "Сұхбат аяқталды",
+      "questionProgress": "Сұрақ {current} / {total}",
+      "feedback": "Кері байланыс",
+      "followUp": "Қосымша сұрақ",
+      "nextQuestion": "Келесі сұрақ",
+      "finishInterview": "Сұхбатты аяқтау",
+      "submitting": "Жіберілуде…"
+    },
+    "summary": {
+      "title": "Сұхбат қорытындысы",
+      "noActiveInterview": "Белсенді сұхбат жоқ",
+      "loadingSummary": "Қорытынды жүктелуде…",
+      "correct": "Дұрыс",
+      "wrong": "Қате",
+      "overallSummary": "Жалпы қорытынды",
+      "strengths": "Күшті жақтары",
+      "weaknesses": "Әлсіз жақтары",
+      "recommendations": "Ұсыныстар",
+      "estimatedLevel": "Бағаланған деңгей",
+      "restartInterview": "Сұхбатты қайталау",
+      "backToHome": "Басты бетке оралу"
     }
   },
   "progress": {

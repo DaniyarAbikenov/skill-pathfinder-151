@@ -130,6 +130,44 @@
         "examples": "Example Phrases",
         "resources": "Resources"
       }
+    },
+    "start": {
+      "title": "Start Interview",
+      "company": "Company description",
+      "companyPlaceholder": "Enter company description...",
+      "job": "Job description",
+      "jobPlaceholder": "Enter job description...",
+      "stack": "Tech stack",
+      "stackPlaceholder": "Enter tech stack (e.g., React, Node.js, PostgreSQL)...",
+      "style": "Interview style",
+      "styleTheoretical": "Theoretical",
+      "stylePractical": "Practical",
+      "styleMixed": "Mixed",
+      "startButton": "Start",
+      "starting": "Starting…"
+    },
+    "result": {
+      "title": "Interview Completed",
+      "questionProgress": "Question {current} / {total}",
+      "feedback": "Feedback",
+      "followUp": "Follow-up question",
+      "nextQuestion": "Next Question",
+      "finishInterview": "Finish Interview",
+      "submitting": "Submitting…"
+    },
+    "summary": {
+      "title": "Interview Summary",
+      "noActiveInterview": "No active interview",
+      "loadingSummary": "Loading summary…",
+      "correct": "Correct",
+      "wrong": "Wrong",
+      "overallSummary": "Overall Summary",
+      "strengths": "Strengths",
+      "weaknesses": "Weaknesses",
+      "recommendations": "Recommendations",
+      "estimatedLevel": "Estimated Level",
+      "restartInterview": "Restart interview",
+      "backToHome": "Back to Home"
     }
   },
   "progress": {

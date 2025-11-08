@@ -130,6 +130,44 @@
         "examples": "Примеры формулировок",
         "resources": "Ресурсы"
       }
+    },
+    "start": {
+      "title": "Начать интервью",
+      "company": "Описание компании",
+      "companyPlaceholder": "Введите описание компании...",
+      "job": "Описание вакансии",
+      "jobPlaceholder": "Введите описание вакансии...",
+      "stack": "Технический стек",
+      "stackPlaceholder": "Введите технологии (например, React, Node.js, PostgreSQL)...",
+      "style": "Стиль интервью",
+      "styleTheoretical": "Теоретический",
+      "stylePractical": "Практический",
+      "styleMixed": "Смешанный",
+      "startButton": "Начать",
+      "starting": "Запуск…"
+    },
+    "result": {
+      "title": "Интервью завершено",
+      "questionProgress": "Вопрос {current} / {total}",
+      "feedback": "Обратная связь",
+      "followUp": "Уточняющий вопрос",
+      "nextQuestion": "Следующий вопрос",
+      "finishInterview": "Завершить интервью",
+      "submitting": "Отправка…"
+    },
+    "summary": {
+      "title": "Итоги интервью",
+      "noActiveInterview": "Нет активного интервью",
+      "loadingSummary": "Загрузка итогов…",
+      "correct": "Правильно",
+      "wrong": "Неправильно",
+      "overallSummary": "Общий итог",
+      "strengths": "Сильные стороны",
+      "weaknesses": "Слабые стороны",
+      "recommendations": "Рекомендации",
+      "estimatedLevel": "Оценочный уровень",
+      "restartInterview": "Повторить интервью",
+      "backToHome": "Вернуться на главную"
     }
   },
   "progress": {
