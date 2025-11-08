@@ -231,6 +231,12 @@
     "selectRole": "Выберите роль",
     "start": "Начать тренировку",
     "session": {
+      "title": "Интервью",
+      "noActiveInterview": "Нет активного интервью",
+      "yourAnswer": "Ваш ответ…",
+      "send": "Отправить",
+      "sending": "…",
+      "typing": "Печатает",
       "question": "Вопрос",
       "answer": "Ваш ответ",
       "answerPlaceholder": "Введите ваш ответ...",

@@ -231,6 +231,12 @@
     "selectRole": "Рөлді таңдаңыз",
     "start": "Жаттығуды бастау",
     "session": {
+      "title": "Сұхбат",
+      "noActiveInterview": "Белсенді сұхбат жоқ",
+      "yourAnswer": "Сіздің жауабыңыз…",
+      "send": "Жіберу",
+      "sending": "…",
+      "typing": "Теріп жатыр",
       "question": "Сұрақ",
       "answer": "Сіздің жауабыңыз",
       "answerPlaceholder": "Жауабыңызды енгізіңіз...",

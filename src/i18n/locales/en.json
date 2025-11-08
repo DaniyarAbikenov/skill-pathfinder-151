@@ -231,6 +231,12 @@
     "selectRole": "Select Role",
     "start": "Start Practice",
     "session": {
+      "title": "Interview",
+      "noActiveInterview": "No active interview",
+      "yourAnswer": "Your answer…",
+      "send": "Send",
+      "sending": "…",
+      "typing": "Typing",
       "question": "Question",
       "answer": "Your Answer",
       "answerPlaceholder": "Enter your answer...",
