@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { MainLayout } from "@/components/layout/MainLayout";
+import { useTranslation } from "react-i18next";
 
 export default function InterviewStart() {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const { reset, setSession, setInitialQuestion } = useInterviewStore();
 
@@ -45,9 +47,21 @@ export default function InterviewStart() {
             <div className="p-8 max-w-xl mx-auto space-y-4">
                 <h1 className="text-2xl font-bold">Start Interview</h1>
 
-                <Textarea value={company} onChange={(e) => setCompany(e.target.value)} />
-                <Textarea value={job} onChange={(e) => setJob(e.target.value)} />
-                <Textarea value={stack} onChange={(e) => setStack(e.target.value)} />
+                <Textarea 
+                    value={company} 
+                    onChange={(e) => setCompany(e.target.value)}
+                    placeholder={t("interview.start.companyPlaceholder")}
+                />
+                <Textarea 
+                    value={job} 
+                    onChange={(e) => setJob(e.target.value)}
+                    placeholder={t("interview.start.jobPlaceholder")}
+                />
+                <Textarea 
+                    value={stack} 
+                    onChange={(e) => setStack(e.target.value)}
+                    placeholder={t("interview.start.stackPlaceholder")}
+                />
 
                 <select
                     className="border p-2 rounded"
