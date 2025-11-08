@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { uploadResume, extractResume } from "@/api/resume";
 import { useResumeStore } from "@/store/resumeStore";
 import { MainLayout } from "@/components/layout/MainLayout";
 
 export default function ResumeUpload() {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const { setFields } = useResumeStore();
 
@@ -33,7 +35,7 @@ export default function ResumeUpload() {
     return (
         <MainLayout>
             <div className="p-8 max-w-xl mx-auto">
-                <h1 className="text-2xl font-bold mb-6">Upload your Resume</h1>
+                <h1 className="text-2xl font-bold mb-6">{t("resume.uploadTitle")}</h1>
 
                 <input
                     type="file"
@@ -42,7 +44,7 @@ export default function ResumeUpload() {
                     className="border p-3 w-full"
                 />
 
-                {loading && <div className="mt-4">Processing…</div>}
+                {loading && <div className="mt-4">{t("resume.upload.processing")}</div>}
             </div>
         </MainLayout>
     );

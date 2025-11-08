@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -16,21 +17,22 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function ResumeVersions() {
+  const { t } = useTranslation();
   const [activeVersion, setActiveVersion] = useState("v1");
   const { toast } = useToast();
 
   const handleDownload = (versionId: string) => {
     toast({
-      title: "Скачивание начато",
-      description: `Версия ${versionId}`,
+      title: t("resume.versions.downloadStarted"),
+      description: `${t("resume.versions.version")} ${versionId}`,
     });
   };
 
   const handleSetActive = (versionId: string) => {
     setActiveVersion(versionId);
     toast({
-      title: "Версия активирована",
-      description: `Версия ${versionId} теперь основная`,
+      title: t("resume.versions.versionActivated"),
+      description: `${t("resume.versions.version")} ${versionId} ${t("resume.versions.versionNowActive")}`,
     });
   };
 
@@ -64,9 +66,9 @@ export default function ResumeVersions() {
     <MainLayout>
       <div className="p-6 max-w-5xl mx-auto space-y-6">
         <div>
-          <h1 className="text-3xl font-bold mb-2">Версии резюме</h1>
+          <h1 className="text-3xl font-bold mb-2">{t("resume.versions.title")}</h1>
           <p className="text-muted-foreground">
-            Управляйте различными версиями вашего резюме
+            {t("resume.versions.description")}
           </p>
         </div>
 
@@ -77,9 +79,9 @@ export default function ResumeVersions() {
                 <div className="flex items-center justify-between">
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <CardTitle className="text-lg">Версия {version.id}</CardTitle>
+                      <CardTitle className="text-lg">{t("resume.versions.version")} {version.id}</CardTitle>
                       {version.id === activeVersion && (
-                        <Badge variant="default">Активная</Badge>
+                        <Badge variant="default">{t("resume.versions.active")}</Badge>
                       )}
                       <Badge variant="outline">{version.tag}</Badge>
                     </div>
@@ -95,17 +97,17 @@ export default function ResumeVersions() {
                     <DialogTrigger asChild>
                       <Button variant="outline" size="sm">
                         <Eye className="h-4 w-4 mr-2" />
-                        Показать отличия
+                        {t("resume.versions.showDiff")}
                       </Button>
                     </DialogTrigger>
                     <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
                       <DialogHeader>
-                        <DialogTitle>Отличия: {version.tag}</DialogTitle>
+                        <DialogTitle>{t("resume.versions.differences")}: {version.tag}</DialogTitle>
                       </DialogHeader>
                       <Tabs defaultValue="after">
                         <TabsList className="grid w-full grid-cols-2">
-                          <TabsTrigger value="before">До</TabsTrigger>
-                          <TabsTrigger value="after">После</TabsTrigger>
+                          <TabsTrigger value="before">{t("resume.improve.before")}</TabsTrigger>
+                          <TabsTrigger value="after">{t("resume.improve.after")}</TabsTrigger>
                         </TabsList>
                         <TabsContent value="before">
                           <Textarea
@@ -132,7 +134,7 @@ export default function ResumeVersions() {
                     onClick={() => handleDownload(version.id)}
                   >
                     <Download className="h-4 w-4 mr-2" />
-                    Скачать
+                    {t("resume.versions.download")}
                   </Button>
 
                   {version.id !== activeVersion && (
@@ -142,7 +144,7 @@ export default function ResumeVersions() {
                       onClick={() => handleSetActive(version.id)}
                     >
                       <CheckCircle className="h-4 w-4 mr-2" />
-                      Сделать активной
+                      {t("resume.versions.makeActive")}
                     </Button>
                   )}
                 </div>
@@ -153,13 +155,13 @@ export default function ResumeVersions() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Советы по версиям</CardTitle>
+            <CardTitle>{t("resume.versions.tips")}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-2 text-sm text-muted-foreground">
-            <p>• Создавайте отдельную версию для каждой категории вакансий</p>
-            <p>• Используйте теги для быстрой идентификации версий</p>
-            <p>• Регулярно обновляйте резюме с новыми достижениями</p>
-            <p>• Адаптируйте резюме под ключевые требования в описании вакансии</p>
+            <p>• {t("resume.versions.tip1")}</p>
+            <p>• {t("resume.versions.tip2")}</p>
+            <p>• {t("resume.versions.tip3")}</p>
+            <p>• {t("resume.versions.tip4")}</p>
           </CardContent>
         </Card>
       </div>

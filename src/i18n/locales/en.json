@@ -19,7 +19,22 @@
     "password": "Password",
     "signIn": "Sign In",
     "signInGoogle": "Sign in with Google",
-    "policies": "Policies and Agreements"
+    "policies": "Policies and Agreements",
+    "fillAll": "Please fill in all fields",
+    "success": "Signed in successfully",
+    "redirect": "Redirecting...",
+    "noAccount": "Don't have an account?",
+    "registerNow": "Register now"
+  },
+  "register": {
+    "title": "Register",
+    "subtitle": "Create a new account",
+    "confirmPassword": "Confirm Password",
+    "passwordMismatch": "Passwords do not match",
+    "passwordWeak": "Password must be at least 6 characters",
+    "success": "Registration successful",
+    "haveAccount": "Already have an account?",
+    "submit": "Register"
   },
   "onboarding": {
     "title": "Profile",
@@ -59,6 +74,14 @@
   "resume": {
     "title": "Resume",
     "subtitle": "Upload, analyze and adapt your resume for jobs",
+    "uploadTitle": "Upload your resume",
+    "uploadDescription": "Upload a PDF file to start processing",
+    "fileSelected": "File selected",
+    "errorUpload": "Upload error",
+    "errorUploadDesc": "Could not upload file. Please try again.",
+    "clickToSelect": "Click to select PDF",
+    "onlyPdf": "PDF only, up to 5 MB",
+    "continue": "Continue",
     "upload": {
       "title": "Resume Upload",
       "dragDrop": "Drag and drop file or click to select",
@@ -66,7 +89,57 @@
       "parse": "Parse Resume",
       "uploaded": "File uploaded",
       "tooBig": "File too large",
-      "tooBigDesc": "File size must not exceed 5 MB"
+      "tooBigDesc": "File size must not exceed 5 MB",
+      "processing": "Processing…"
+    },
+    "edit": {
+      "title": "Edit Resume",
+      "loading": "Loading…",
+      "openOriginal": "Open original PDF",
+      "jobDescription": "Job Description",
+      "jobDescriptionPlaceholder": "Paste the job description here…",
+      "continueButton": "Continue → Get Recommendations",
+      "processing": "Processing…"
+    },
+    "improve": {
+      "title": "Improve Resume",
+      "jobDescription": "Job Description",
+      "jobDescriptionPlaceholder": "Paste job description here...",
+      "continue": "Continue",
+      "analyzing": "Analyzing...",
+      "suggestedImprovements": "Suggested Improvements",
+      "section": "Section",
+      "type": "Type",
+      "before": "Before",
+      "after": "After",
+      "reason": "Reason",
+      "generatePdf": "Generate PDF (Coming next)"
+    },
+    "versions": {
+      "title": "Resume Versions",
+      "description": "Manage different versions of your resume",
+      "version": "Version",
+      "active": "Active",
+      "showDiff": "Show differences",
+      "download": "Download",
+      "makeActive": "Make active",
+      "differences": "Differences",
+      "downloadStarted": "Download started",
+      "versionActivated": "Version activated",
+      "versionNowActive": "is now active",
+      "tips": "Version Tips",
+      "tip1": "Create a separate version for each job category",
+      "tip2": "Use tags for quick version identification",
+      "tip3": "Regularly update your resume with new achievements",
+      "tip4": "Adapt your resume to key requirements in job description"
+    },
+    "generate": {
+      "title": "Generate Resume",
+      "modern": "Modern",
+      "classic": "Classic",
+      "minimalist": "Minimalist",
+      "generatePdf": "Generate PDF",
+      "downloadPdf": "Download PDF"
     },
     "parsed": {
       "title": "Parsed Data",

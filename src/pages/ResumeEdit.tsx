@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { getResume, improveResume } from "@/api/resume";
 import { useResumeStore } from "@/store/resumeStore";
 import { Button } from "@/components/ui/button";
@@ -12,6 +13,7 @@ import { ResumeExperienceEditor } from "@/components/resume/ResumeExperienceEdit
 import { ResumeProjectsEditor } from "@/components/resume/ResumeProjectsEditor";
 
 export default function ResumeEdit() {
+    const { t } = useTranslation();
     const { resumeId } = useParams();
     const navigate = useNavigate();
 
@@ -61,14 +63,14 @@ export default function ResumeEdit() {
     if (loading)
         return (
             <MainLayout>
-                <div className="p-8 text-center">Loading…</div>
+                <div className="p-8 text-center">{t("resume.edit.loading")}</div>
             </MainLayout>
         );
 
     return (
         <MainLayout>
             <div className="p-8 max-w-4xl mx-auto space-y-8">
-                <h1 className="text-2xl font-bold">Edit Resume</h1>
+                <h1 className="text-2xl font-bold">{t("resume.edit.title")}</h1>
 
                 {/* ✅ ссылка на оригинальный PDF */}
                 {pdfUrl && (
@@ -77,7 +79,7 @@ export default function ResumeEdit() {
                         target="_blank"
                         className="text-blue-600 underline"
                     >
-                        Open original PDF
+                        {t("resume.edit.openOriginal")}
                     </a>
                 )}
 
@@ -92,10 +94,10 @@ export default function ResumeEdit() {
 
                 {/* ✅ поле для текста вакансии */}
                 <div className="space-y-2">
-                    <label className="font-medium text-sm">Job Description</label>
+                    <label className="font-medium text-sm">{t("resume.edit.jobDescription")}</label>
                     <textarea
                         className="w-full p-3 border rounded-md h-40"
-                        placeholder="Paste the job description here…"
+                        placeholder={t("resume.edit.jobDescriptionPlaceholder")}
                         value={jdText}
                         onChange={(e) => setJdText(e.target.value)}
                     />
@@ -110,10 +112,10 @@ export default function ResumeEdit() {
                     {isSubmitting ? (
                         <div className="flex items-center gap-2">
                             <span className="w-4 h-4 border-2 border-t-transparent border-white rounded-full animate-spin" />
-                            Processing…
+                            {t("resume.edit.processing")}
                         </div>
                     ) : (
-                        "Continue → Get Recommendations"
+                        t("resume.edit.continueButton")
                     )}
                 </Button>
             </div>

@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { improveResume } from "@/api/resume";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
 
 export default function ResumeImprove() {
+    const { t } = useTranslation();
     const { resumeId } = useParams();
     const [jdText, setJdText] = useState("");
     const [loading, setLoading] = useState(false);
@@ -28,22 +30,22 @@ export default function ResumeImprove() {
     return (
         <MainLayout>
             <div className="p-8 max-w-4xl mx-auto space-y-8">
-                <h1 className="text-2xl font-bold">Improve Resume</h1>
+                <h1 className="text-2xl font-bold">{t("resume.improve.title")}</h1>
 
                 {/* 🔹 Ввод JD */}
                 <div className="space-y-2">
-                    <label className="font-semibold">Job Description</label>
+                    <label className="font-semibold">{t("resume.improve.jobDescription")}</label>
                     <textarea
                         className="w-full border rounded p-3 h-40"
                         value={jdText}
                         onChange={(e) => setJdText(e.target.value)}
-                        placeholder="Paste job description here..."
+                        placeholder={t("resume.improve.jobDescriptionPlaceholder")}
                     />
                 </div>
 
                 {/* 🔹 Кнопка Continue */}
                 <Button onClick={handleAnalyze} disabled={loading}>
-                    {loading ? "Analyzing..." : "Continue"}
+                    {loading ? t("resume.improve.analyzing") : t("resume.improve.continue")}
                 </Button>
 
                 {/* 🔹 Ошибка */}
@@ -52,21 +54,21 @@ export default function ResumeImprove() {
                 {/* 🔹 Список улучшений */}
                 {improvements.length > 0 && (
                     <div className="space-y-6 mt-8">
-                        <h2 className="text-xl font-semibold">Suggested Improvements</h2>
+                        <h2 className="text-xl font-semibold">{t("resume.improve.suggestedImprovements")}</h2>
 
                         {improvements.map((impr) => (
                             <div
                                 key={impr.id}
                                 className="border rounded p-4 space-y-2 bg-white"
                             >
-                                <div className="font-bold">Section: {impr.section}</div>
+                                <div className="font-bold">{t("resume.improve.section")}: {impr.section}</div>
                                 <div className="text-sm text-gray-600">
-                                    Type: {impr.change_type}
+                                    {t("resume.improve.type")}: {impr.change_type}
                                 </div>
 
                                 {impr.before && (
                                     <div>
-                                        <div className="text-gray-500 text-sm">Before:</div>
+                                        <div className="text-gray-500 text-sm">{t("resume.improve.before")}:</div>
                                         <pre className="bg-gray-100 p-2 rounded text-sm whitespace-pre-wrap">
                                             {impr.before}
                                         </pre>
@@ -75,7 +77,7 @@ export default function ResumeImprove() {
 
                                 {impr.after && (
                                     <div>
-                                        <div className="text-gray-500 text-sm">After:</div>
+                                        <div className="text-gray-500 text-sm">{t("resume.improve.after")}:</div>
                                         <pre className="bg-gray-50 p-2 rounded text-sm whitespace-pre-wrap">
                                             {impr.after}
                                         </pre>
@@ -83,7 +85,7 @@ export default function ResumeImprove() {
                                 )}
 
                                 <div className="text-sm">
-                                    <span className="font-semibold">Reason:</span>{" "}
+                                    <span className="font-semibold">{t("resume.improve.reason")}:</span>{" "}
                                     {impr.reason}
                                 </div>
                             </div>
@@ -96,7 +98,7 @@ export default function ResumeImprove() {
                                 alert("PDF generation will be implemented next.")
                             }
                         >
-                            Generate PDF (Coming next)
+                            {t("resume.improve.generatePdf")}
                         </Button>
                     </div>
                 )}
